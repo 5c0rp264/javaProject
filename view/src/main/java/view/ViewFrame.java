@@ -128,10 +128,10 @@ class ViewFrame extends JFrame implements KeyListener {
 	private void buildViewFrame(final IModel model) {
 		this.setModel(model);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setResizable(false);
+		this.setResizable(true);
 		this.addKeyListener(this);
 		this.setContentPane(new ViewPanel(this));
-		this.setSize(400 + this.getInsets().left + this.getInsets().right, 60 + this.getInsets().top + this.getInsets().bottom);
+		this.setSize(1000 + this.getInsets().left + this.getInsets().right, 1000 + this.getInsets().top + this.getInsets().bottom);
 		this.setLocationRelativeTo(null);
 	}
 
@@ -141,9 +141,6 @@ class ViewFrame extends JFrame implements KeyListener {
 	 * @param message
 	 *          the message
 	 */
-	public void printMessage(final String message) {
-		JOptionPane.showMessageDialog(null, message);
-	}
 
 	/*
 	 * (non-Javadoc)

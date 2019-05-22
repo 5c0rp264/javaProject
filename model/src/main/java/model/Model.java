@@ -57,6 +57,7 @@ public final class Model extends Observable implements IModel {
 		try {
 			final DAOLevel leveldao = new DAOLevel(DBConnection.getInstance().getConnection());
 			this.setLevel(leveldao.find(lvlNum));
+			System.out.println(this.level.getLevelAsString());
 		} catch (final SQLException e) {
 			e.printStackTrace();
 		}
@@ -82,14 +83,8 @@ public final class Model extends Observable implements IModel {
 		return this.level;
 	}
 
-	@Override
-	public void loadLevel(String lvlNum) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void setLevel(level level) {
-		this.level = level;
+	public void setLevel(level _level) {
+		this.level = _level;
 		this.setChanged();
 		this.notifyObservers();
 	}

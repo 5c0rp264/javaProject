@@ -75,16 +75,16 @@ public final class Controller implements IController {
 	public void orderPerform(final ControllerOrder controllerOrder) {
 		switch (controllerOrder) {
 			case Up:
-				this.model.loadLevel("Up");
+				this.model.loadLevel(1);
 				break;
 			case Down:
-				this.model.loadLevel("Down");
+				this.model.loadLevel(1);
 				break;
 			case Left:
-				this.model.loadLevel("Left");
+				this.model.loadLevel(1);
 				break;
 			case Right:
-				this.model.loadLevel("Right");
+				this.model.loadLevel(1);
 				break;
 			default:
 				break;
