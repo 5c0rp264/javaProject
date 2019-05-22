@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -12,6 +13,8 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import entity.spriteEntity;
 
 /**
  * The Class ViewPanel.
@@ -26,7 +29,6 @@ class ViewPanel extends JPanel implements Observer {
 	private static final long	serialVersionUID	= -998294702363713521L;
 
 	
-	private BufferedImage myPicture;
 	
 	/**
 	 * Instantiates a new view panel.
@@ -80,17 +82,6 @@ class ViewPanel extends JPanel implements Observer {
 		/*graphics.drawString(*/
 		int x =1;
 		int y =1;
-		
-		try {
-			System.out.println(new File("../Terre.png").getAbsolutePath());
-			myPicture = ImageIO.read(new File("../Terre.png"));
-			g2.drawImage(myPicture,0,500,this);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
 		for (int i = 0; i < lvlAsStr.length(); i++) {
 			if (lvlAsStr.charAt(i) == '\n') {
 				System.out.println("That's a \\n");
@@ -99,8 +90,15 @@ class ViewPanel extends JPanel implements Observer {
 			}else if (lvlAsStr.charAt(i) == '\r') {
 				System.out.println("That's a \\r");
 			}else {
+				entity.spriteEntity _spriteEntity;
+				try {
+					_spriteEntity = new spriteEntity(lvlAsStr.charAt(i));
+					g2.drawImage(_spriteEntity.getMyPicture(),(x-1)*16,(y-1)*16, this);
+				} catch (IOException e) {
+					System.out.println("Le fichier image n'a pas pu être correctement trouvé");
+					e.printStackTrace();
+				}
 				System.out.print("The character is ");
-				
 				System.out.println(lvlAsStr.charAt(i));
 			}
 			
