@@ -73,18 +73,20 @@ public final class Controller implements IController {
 	 * @see contract.IController#orderPerform(contract.ControllerOrder)
 	 */
 	public void orderPerform(final ControllerOrder controllerOrder) {
+		
 		switch (controllerOrder) {
 			case Up:
-				this.model.loadLevel(1);
+				System.out.println("orderPerform Up");
+				this.model.movePlayer(5);
 				break;
 			case Down:
-				this.model.loadLevel(1);
+				this.model.movePlayer(2);
 				break;
 			case Left:
-				this.model.loadLevel(1);
+				this.model.movePlayer(1);
 				break;
 			case Right:
-				this.model.loadLevel(1);
+				this.model.movePlayer(3);
 				break;
 			default:
 				break;

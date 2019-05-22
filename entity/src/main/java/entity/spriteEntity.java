@@ -18,7 +18,7 @@ public class spriteEntity {
 		    break;
 		  case't':
 		    // code earth
-				setMyPicture(ImageIO.read(new File("../Bordure.png")));
+				setMyPicture(ImageIO.read(new File("../Terre.png")));
 
 		    break;
 		  case'r':
@@ -35,20 +35,20 @@ public class spriteEntity {
 				setMyPicture(ImageIO.read(new File("../Chemin.png")));
 			    break;
 		  case's':
-			    // code spawn no sprite
-				setMyPicture(ImageIO.read(new File("../Player.png")));
+			    // code spawn
+				setMyPicture(ImageIO.read(new File("../Hero.png")));
 			    break;
 		  case'e':
-			    // code ennemi no sprite
-				setMyPicture(ImageIO.read(new File("../Enemi.png")));
+			    // code ennemi
+				setMyPicture(ImageIO.read(new File("../Ennemi.png")));
 			    break;
 		  case'X':
 			    // code exit
 				setMyPicture(ImageIO.read(new File("../Sortie.png")));
 			    break;
 		  case'm':
-			    // code wall no sprite
-				setMyPicture(ImageIO.read(new File("../mur.png")));
+			    // code wall
+				setMyPicture(ImageIO.read(new File("../Mur.png")));
 			    break;
 		  default:
 			  break;

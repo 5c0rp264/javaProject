@@ -1,10 +1,12 @@
 package model;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Observable;
 
 import contract.IModel;
 import entity.level;
+import entity.spriteEntity;
 
 /**
  * The Class Model.
@@ -13,6 +15,8 @@ import entity.level;
  */
 public final class Model extends Observable implements IModel {
 
+	
+	
 	/** The helloWorld. */
 	private level level;
 
@@ -22,36 +26,20 @@ public final class Model extends Observable implements IModel {
 	public Model() {
 		this.level = new level();
 	}
+	
+	private String swap(String str, int j, int i) { 
+        System.out.println("Before :\n"+str+"\n playerIndex: "+i+"goalIndex:"+j);
+		if (j == str.length() - 1) 
+            return str.substring(0, i) + str.charAt(j) 
+             + str.substring(i + 1, j) + str.charAt(i); 
+  
+        return str.substring(0, i) + str.charAt(j) 
+               + str.substring(i + 1, j) + str.charAt(i)  
+               + str.substring(j + 1, str.length()); 
+    }
 
-	/**
-     * Gets the hello world.
-     *
-     * @return the hello world
-     */
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IModel#getMessage()
-	 */
-
-	/**
-     * Sets the hello world.
-     *
-     * @param helloWorld
-     *            the new hello world
-     */
-
-	/**
-     * Load hello world.
-     *
-     * @param code
-     *            the code
-     */
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IModel#getMessage(java.lang.String)
-	 */
+	
+	
 	public void loadLevel(final int lvlNum) {
 		System.out.println("getting level with SQL");
 		try {
@@ -87,6 +75,56 @@ public final class Model extends Observable implements IModel {
 		this.level = _level;
 		this.setChanged();
 		this.notifyObservers();
+	}
+
+	@Override
+	public void movePlayer(int directionIndex) {
+		// TODO Auto-generated method stub
+		System.out.println("movePlayer called");
+		String lvlAsStr = level.getLevelAsString();
+		int x=1;
+		int xMax = 0;
+		int y=1;
+		int playerIndex;
+		int goalPlace;
+		for (int i = 0; i < lvlAsStr.length(); i++) {
+			if (lvlAsStr.charAt(i) == '\n') {
+				//System.out.println("That's a \\n");
+				y++;
+				xMax=x;
+				x=1;
+			}else if (lvlAsStr.charAt(i) == 's') {
+				//System.out.println("That's a \\r");
+				playerIndex = i;
+				//if (y>1) {
+				switch (directionIndex) {
+					case 5 :
+						goalPlace = ((y-2)*xMax)+x-1;
+						break;
+					case 2 :
+						while (lvlAsStr.charAt(i) == '\n') {
+							xMax++;
+						}
+						goalPlace = ((y)*xMax)+x-1;
+						break;
+					case 1 :
+						goalPlace = ((y-1)*xMax)+x-2;
+						break;
+					case 3 :
+						goalPlace = ((y-1)*xMax)+x;
+						break;
+					default:
+						goalPlace = playerIndex;
+						break;
+				}
+				level.setLevelAsString(this.swap(lvlAsStr,playerIndex,goalPlace));
+				this.setChanged();
+				this.notifyObservers();
+			}else{
+				x++;
+			}
+			
+		}
 	}
 
 }

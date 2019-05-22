@@ -84,11 +84,11 @@ class ViewPanel extends JPanel implements Observer {
 		int y =1;
 		for (int i = 0; i < lvlAsStr.length(); i++) {
 			if (lvlAsStr.charAt(i) == '\n') {
-				System.out.println("That's a \\n");
+				//System.out.println("That's a \\n");
 				y++;
 				x=1;
 			}else if (lvlAsStr.charAt(i) == '\r') {
-				System.out.println("That's a \\r");
+				//System.out.println("That's a \\r");
 			}else {
 				entity.spriteEntity _spriteEntity;
 				try {
@@ -98,10 +98,10 @@ class ViewPanel extends JPanel implements Observer {
 					System.out.println("Le fichier image n'a pas pu être correctement trouvé");
 					e.printStackTrace();
 				}
-				System.out.print("The character is ");
-				System.out.println(lvlAsStr.charAt(i));
+				//System.out.print("The character is ");
+				//System.out.println(lvlAsStr.charAt(i));
+				x++;
 			}
-			
 			
 		}
 		System.out.println(lvlAsStr);

@@ -34,4 +34,7 @@ public interface IModel {
 	Observable getObservable();
 
 	level getLevel();
+
+	void movePlayer(int i);
+
 }

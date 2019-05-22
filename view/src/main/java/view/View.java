@@ -38,8 +38,10 @@ public final class View implements IView, Runnable {
 	 * @return the controller order
 	 */
 	protected static ControllerOrder keyCodeToControllerOrder(final int keyCode) {
+		System.out.println("Keypressed2");
 		switch (keyCode) {
 			case KeyEvent.VK_Z:
+				System.out.println("Handled as a Z");
 				return ControllerOrder.Up;
 			case KeyEvent.VK_S:
 				return ControllerOrder.Down;
