@@ -28,7 +28,7 @@ public final class Model extends Observable implements IModel {
 	}
 	
 	private String swap(String str, int j, int i) { 
-        System.out.println("Before :\n"+str+"\n playerIndex: "+i+"goalIndex:"+j);
+        System.out.println("Before :\n"+str+"\n goalIndex: "+i+"playerIndex:"+j);
 		if (j == str.length() - 1) 
             return str.substring(0, i) + str.charAt(j) 
              + str.substring(i + 1, j) + str.charAt(i); 
