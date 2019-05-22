@@ -12,7 +12,7 @@ import contract.IView;
 /**
  * The Class View.
  *
- * @author Jean-Aymeric Diet
+ * @author Quentin AOUSTIN
  */
 public final class View implements IView, Runnable {
 
@@ -39,27 +39,20 @@ public final class View implements IView, Runnable {
 	 */
 	protected static ControllerOrder keyCodeToControllerOrder(final int keyCode) {
 		switch (keyCode) {
-			case KeyEvent.VK_G:
-				return ControllerOrder.English;
-			case KeyEvent.VK_F:
-				return ControllerOrder.Francais;
+			case KeyEvent.VK_Z:
+				return ControllerOrder.Up;
+			case KeyEvent.VK_S:
+				return ControllerOrder.Down;
+			case KeyEvent.VK_Q:
+				return ControllerOrder.Left;
 			case KeyEvent.VK_D:
-				return ControllerOrder.Deutsch;
-			case KeyEvent.VK_I:
-				return ControllerOrder.Indonesia;
+				return ControllerOrder.Right;
 			default:
-				return ControllerOrder.English;
+				//fail("Key not recognize");
+				return ControllerOrder.Up;
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IView#printMessage(java.lang.String)
-	 */
-	public void printMessage(final String message) {
-		this.viewFrame.printMessage(message);
-	}
 
 	/*
 	 * (non-Javadoc)
@@ -78,5 +71,11 @@ public final class View implements IView, Runnable {
 	 */
 	public void setController(final IController controller) {
 		this.viewFrame.setController(controller);
+	}
+
+	@Override
+	public void displayLevel(String levelAsText) {
+		// TODO Auto-generated method stub
+		System.out.println("should display here");
 	}
 }

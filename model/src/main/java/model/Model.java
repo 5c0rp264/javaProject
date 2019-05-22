@@ -4,23 +4,23 @@ import java.sql.SQLException;
 import java.util.Observable;
 
 import contract.IModel;
-import entity.HelloWorld;
+import entity.level;
 
 /**
  * The Class Model.
  *
- * @author Jean-Aymeric Diet
+ * @author Quentin AOUSTIN
  */
 public final class Model extends Observable implements IModel {
 
 	/** The helloWorld. */
-	private HelloWorld helloWorld;
+	private level level;
 
 	/**
 	 * Instantiates a new model.
 	 */
 	public Model() {
-		this.helloWorld = new HelloWorld();
+		this.level = new level();
 	}
 
 	/**
@@ -33,9 +33,6 @@ public final class Model extends Observable implements IModel {
 	 *
 	 * @see contract.IModel#getMessage()
 	 */
-	public HelloWorld getHelloWorld() {
-		return this.helloWorld;
-	}
 
 	/**
      * Sets the hello world.
@@ -43,11 +40,6 @@ public final class Model extends Observable implements IModel {
      * @param helloWorld
      *            the new hello world
      */
-	private void setHelloWorld(final HelloWorld helloWorld) {
-		this.helloWorld = helloWorld;
-		this.setChanged();
-		this.notifyObservers();
-	}
 
 	/**
      * Load hello world.
@@ -60,10 +52,11 @@ public final class Model extends Observable implements IModel {
 	 *
 	 * @see contract.IModel#getMessage(java.lang.String)
 	 */
-	public void loadHelloWorld(final String code) {
+	public void loadLevel(final int lvlNum) {
+		System.out.println("getting level with SQL");
 		try {
-			final DAOHelloWorld daoHelloWorld = new DAOHelloWorld(DBConnection.getInstance().getConnection());
-			this.setHelloWorld(daoHelloWorld.find(code));
+			final DAOLevel leveldao = new DAOLevel(DBConnection.getInstance().getConnection());
+			this.setLevel(leveldao.find(lvlNum));
 		} catch (final SQLException e) {
 			e.printStackTrace();
 		}
@@ -82,4 +75,23 @@ public final class Model extends Observable implements IModel {
 	public Observable getObservable() {
 		return this;
 	}
+
+	@Override
+	public entity.level getLevel() {
+		// TODO Auto-generated method stub
+		return this.level;
+	}
+
+	@Override
+	public void loadLevel(String lvlNum) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setLevel(level level) {
+		this.level = level;
+		this.setChanged();
+		this.notifyObservers();
+	}
+
 }

@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 /**
  * The Class ViewPanel.
  *
- * @author Jean-Aymeric Diet
+ * @author Quentin AOUSTIN
  */
 class ViewPanel extends JPanel implements Observer {
 
@@ -65,6 +65,8 @@ class ViewPanel extends JPanel implements Observer {
 	@Override
 	protected void paintComponent(final Graphics graphics) {
 		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
-		graphics.drawString(this.getViewFrame().getModel().getHelloWorld().getMessage(), 10, 20);
+		/*graphics.drawString(*/
+		System.out.println(this.getViewFrame().getModel().getLevel().getLevelAsString());
+		/*, 10, 20);*/
 	}
 }
