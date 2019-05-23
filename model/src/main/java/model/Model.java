@@ -26,33 +26,6 @@ public final class Model extends Observable implements IModel {
 		this.level = new level();
 	}
 
-	private String swap(String str, int i, int j) {
-		if (i < j) {
-			System.out.println("Before :\n" + str + "\n goalIndex: " + i + "playerIndex:" + j);
-			if (j == str.length() - 1) {
-				return str.substring(0, i) + str.charAt(j) + str.substring(i + 1, j) + str.charAt(i);
-			} else {
-				System.out.println("not the last one");
-				return str.substring(0, i) + str.charAt(j) + str.substring(i + 1, j) + str.charAt(i)
-						+ str.substring(j + 1, str.length());
-			}
-		} else {
-			int a;
-			a = j;
-			j = i;
-			i = a;
-			System.out.println("Before :\n" + str + "\n goalIndex: " + i + "playerIndex:" + j);
-			if (j == str.length() - 1) {
-				return str.substring(0, i) + str.charAt(j) + str.substring(i + 1, j) + str.charAt(i);
-			} else {
-				System.out.println("not the last one");
-				return str.substring(0, i) + str.charAt(j) + str.substring(i + 1, j) + str.charAt(i)
-						+ str.substring(j + 1, str.length());
-			}
-		}
-
-	}
-
 	public void loadLevel(final int lvlNum) {
 		System.out.println("getting level with SQL");
 		try {
@@ -136,11 +109,14 @@ public final class Model extends Observable implements IModel {
 				}
 			}
 		}
-		charList.get(oldSYPosition).set(oldSXposition, 't');
-		charList.get(newSYPosition).set((newSXposition), 's');
-		level.setLevelAsList(charList);
-		this.setChanged();
-		this.notifyObservers();
+		if (newSXposition != 0 && newSYPosition != 0) {
+			charList.get(oldSYPosition).set(oldSXposition, 'c');
+			charList.get(newSYPosition).set((newSXposition), 's');
+			level.setLevelAsList(charList);
+			this.setChanged();
+			this.notifyObservers();
+		}
+		
 	}
 
 }
