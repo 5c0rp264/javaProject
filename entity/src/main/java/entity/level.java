@@ -15,6 +15,8 @@ public class level extends Entity {
 	/** The message. */
 	private String	levelAsString;
 	
+	private int currentScore;
+	
 	private ArrayList<ArrayList<Character> > charList = new ArrayList<ArrayList<Character> >();
 
 	/**
@@ -31,6 +33,7 @@ public class level extends Entity {
 		this.setLevelID(_lvlId);
 		this.setHighScoreLevel(_highScore);
 		this.setLevelAsString(_levelAsString);
+		this.currentScore = 0;
 	}
 
 	/**
@@ -58,7 +61,7 @@ public class level extends Entity {
 				"#ttttrdttrttttttttrttttttrtrdttttttrttt#\r\n" + 
 				"#tttcttrtcttrtrrtttttttttrtrdttttttcttr#\r\n" + 
 				"#tdttttctttttctttttttttctrttrttttrtttrt#\r\n" + 
-				"########################################");
+				"########################################\r\n");
 	}
 
 	
@@ -143,5 +146,13 @@ public class level extends Entity {
 		    } 
 		}
 		this.levelAsString = iWillBeLevelAsString;
+	}
+
+	public int getCurrentScore() {
+		return currentScore;
+	}
+
+	public void setCurrentScore(int currentScore) {
+		this.currentScore = currentScore;
 	}
 }

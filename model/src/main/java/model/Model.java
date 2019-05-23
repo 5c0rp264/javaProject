@@ -3,7 +3,10 @@ package model;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Observable;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import contract.IModel;
 import entity.level;
@@ -18,13 +21,42 @@ public final class Model extends Observable implements IModel {
 
 	/** The helloWorld. */
 	private level level;
+	private Model model = this;
+	collisionHandler cH = new collisionHandler();
 
 	/**
 	 * Instantiates a new model.
 	 */
 	public Model() {
-		this.level = new level();
+		this.loadLevel(1);
 	}
+	
+	public void flagObserver() {
+		this.setChanged();
+		this.notifyObservers();
+	}
+	
+	
+	public void startTimerFallingObject(){
+	    TimerTask repeatedTask = new TimerTask() {
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				level.setCurrentScore(level.getCurrentScore()+1);
+				System.out.println(level.getCurrentScore());
+				cH.makeEverythingFallDown(level, model);
+			}
+	    };
+	    Timer timer = new Timer("fallingObjectTimer");
+	     
+	    long delay  = 0;
+	    long period = 250;
+	    timer.scheduleAtFixedRate(repeatedTask, delay, period);
+	}
+	
+	
+	
+	
 
 	public void loadLevel(final int lvlNum) {
 		System.out.println("getting level with SQL");
@@ -35,6 +67,7 @@ public final class Model extends Observable implements IModel {
 		} catch (final SQLException e) {
 			e.printStackTrace();
 		}
+		startTimerFallingObject();
 	}
 
 	/**
@@ -59,8 +92,7 @@ public final class Model extends Observable implements IModel {
 
 	public void setLevel(level _level) {
 		this.level = _level;
-		this.setChanged();
-		this.notifyObservers();
+		this.flagObserver();
 	}
 
 	@Override
@@ -75,8 +107,7 @@ public final class Model extends Observable implements IModel {
 		for (int i = 0; i < charList.size(); i++) {
 			for (int j = 0; j < charList.get(i).size(); j++) {
 				if (charList.get(i).get(j) == 's') {
-					collisionHandler cH = new collisionHandler();
-					if (cH.checkCollisionForPlayerPositionAndMovement(i, j, directionIndex, level) == true) {
+					if (this.cH.checkCollisionForPlayerPositionAndMovement(i, j, directionIndex, level) == true) {
 						switch (directionIndex) {
 						case 5:
 							newSXposition = j;
@@ -101,6 +132,7 @@ public final class Model extends Observable implements IModel {
 							newSYPosition = i;
 							oldSXposition = j;
 							oldSYPosition = i;
+							break;
 						default:
 							break;
 						}
@@ -113,8 +145,7 @@ public final class Model extends Observable implements IModel {
 			charList.get(oldSYPosition).set(oldSXposition, 'c');
 			charList.get(newSYPosition).set((newSXposition), 's');
 			level.setLevelAsList(charList);
-			this.setChanged();
-			this.notifyObservers();
+			this.flagObserver();
 		}
 		
 	}
