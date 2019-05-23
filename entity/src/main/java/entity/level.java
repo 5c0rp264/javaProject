@@ -23,29 +23,36 @@ public class level extends Entity {
 	 */
 	public level(final int _lvlId, final int _highScore, final String _levelAsString) {
 		this.setLevelID(_lvlId);
-		this.setHighScoreLevel(highScore);
-		this.setLevelAsString(levelAsString);
+		this.setHighScoreLevel(_highScore);
+		this.setLevelAsString(_levelAsString);
 	}
 
 	/**
 	 * Instantiates a new hello world.
 	 */
 	public level() {
-		this(1, 0, "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\r\n" + 
-				"WRRRRRRRRRRRRRRRRDRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRW\r\n" + 
-				"WRRRPRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRW\r\n" + 
-				"WRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRDRRRRRRRRRRRRRRRRRRRRRRRRRRRRW\r\n" + 
-				"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWRRRRRRRRRRRRRRRRW\r\n" + 
-				"WRRRRRRRRRRRDRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRW\r\n" + 
-				"WRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRW\r\n" + 
-				"WRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRW\r\n" + 
-				"WRRRRRRRRRWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\r\n" + 
-				"WRRRRRRRRRRDRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRW\r\n" + 
-				"WRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRW\r\n" + 
-				"WRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRREW\r\n" + 
-				"WRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRW\r\n" + 
-				"WRRRRRRRRRRRRDRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRW\r\n" + 
-				"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\r\n" );
+		this(1, 0, "########################################\r\n" + 
+				"#ttttttcttdtrctttttrtrtttttttcttttrtttt#\r\n" + 
+				"#trsrttttttctttttttttrdttrttttctttttctt#\r\n" + 
+				"#ttttttttttcttrtttttrtrttrttttttttrtttt#\r\n" + 
+				"#rtrrtttttttttrttttttrttrttttrtttrttttt#\r\n" + 
+				"#rtcrtttttttttcrttrttttttttrttttttrtrrt#\r\n" + 
+				"#tttcttrttttttttrtttttrtcrttttttttrtrrt#\r\n" + 
+				"#mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmtttrttrt#\r\n" + 
+				"#tctttrttdtcttrtrttttttttttdtrdttttttct#\r\n" + 
+				"#ttdtttttrtttttcttttttttrrcrttrttttrttt#\r\n" + 
+				"#tttrttrtrttttttttttttttrctrttrtttttttt#\r\n" + 
+				"#trtttttrttttttttrrrtttttttrttctdttttrt#\r\n" + 
+				"#tdttcttrtcctttttrtrdttdttttrtttrttdtct#\r\n" + 
+				"#tcrttttttttttttttrcrttrttttttttdtttttr#\r\n" + 
+				"#ttttttttmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm#\r\n" + 
+				"#crtttttttttrtttdttttrtttttrtttrttttttt#\r\n" + 
+				"#crtttttttttcrttrttttttttrttttttrtrrttX#\r\n" + 
+				"#tcttrttttttttrtttttrtccttttdtttrtrrttt#\r\n" + 
+				"#ttttrdttrttttttttrttttttrtrdttttttrttt#\r\n" + 
+				"#tttcttrtcttrtrrtttttttttrtrdttttttcttr#\r\n" + 
+				"#tdttttctttttctttttttttctrttrttttrtttrt#\r\n" + 
+				"########################################");
 	}
 
 	
@@ -89,7 +96,7 @@ public class level extends Entity {
 	 * @return the levelAsString
 	 */
 	public String getLevelAsString() {
-		return levelAsString;
+		return this.levelAsString;
 	}
 	/**
 	 * Sets the level as String.
