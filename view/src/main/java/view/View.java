@@ -51,7 +51,7 @@ public final class View implements IView, Runnable {
 				return ControllerOrder.Right;
 			default:
 				//fail("Key not recognize");
-				return ControllerOrder.Up;
+				return ControllerOrder.notTheRightKey;
 		}
 	}
 

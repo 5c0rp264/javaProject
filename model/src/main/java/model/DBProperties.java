@@ -18,13 +18,13 @@ class DBProperties extends Properties {
 	private final static String	PROPERTIES_FILE_NAME	= "model.properties";
 
 	/** The url. */
-	private String							url										= "jdbc:mysql://localhost:3306/jpublankproject?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
+	private String	url	= "jdbc:mysql://localhost:3306/jpublankproject?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
 
 	/** The login. */
-	private String							login									= "root";
+	private String login = "root";
 
 	/** The password. */
-	private String							password							= "";
+	private String	password = "";
 
 	/**
 	 * Instantiates a new DB properties.

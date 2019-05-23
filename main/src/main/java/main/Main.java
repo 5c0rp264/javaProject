@@ -1,5 +1,5 @@
 /**
- * @author Jean-Aymeric DIET jadiet@cesi.fr
+ * @author Quentin Aoustin
  * @version 1.0
  */
 package main;
@@ -29,6 +29,6 @@ public abstract class Main {
         view.setController(controller);
 
         controller.control();
-        controller.orderPerform(ControllerOrder.Right);
+        controller.orderPerform(ControllerOrder.notTheRightKey);
     }
 }
