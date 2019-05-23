@@ -2,6 +2,7 @@ package model;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Observable;
 
 import contract.IModel;
@@ -15,8 +16,6 @@ import entity.spriteEntity;
  */
 public final class Model extends Observable implements IModel {
 
-	
-	
 	/** The helloWorld. */
 	private level level;
 
@@ -26,42 +25,34 @@ public final class Model extends Observable implements IModel {
 	public Model() {
 		this.level = new level();
 	}
-	
+
 	private String swap(String str, int i, int j) {
 		if (i < j) {
-	        System.out.println("Before :\n"+str+"\n goalIndex: "+i+"playerIndex:"+j);
+			System.out.println("Before :\n" + str + "\n goalIndex: " + i + "playerIndex:" + j);
 			if (j == str.length() - 1) {
-	            return str.substring(0, i) + str.charAt(j) 
-	             + str.substring(i + 1, j) + str.charAt(i);
-	        }else {
-	        	System.out.println("not the last one");
-	            return str.substring(0, i) + str.charAt(j) 
-	            + str.substring(i + 1, j) + str.charAt(i)  
-	            + str.substring(j + 1, str.length());
-	        }
-		}else {
+				return str.substring(0, i) + str.charAt(j) + str.substring(i + 1, j) + str.charAt(i);
+			} else {
+				System.out.println("not the last one");
+				return str.substring(0, i) + str.charAt(j) + str.substring(i + 1, j) + str.charAt(i)
+						+ str.substring(j + 1, str.length());
+			}
+		} else {
 			int a;
-			a=j;
-			j=i;
-			i=a;
-	        System.out.println("Before :\n"+str+"\n goalIndex: "+i+"playerIndex:"+j);
+			a = j;
+			j = i;
+			i = a;
+			System.out.println("Before :\n" + str + "\n goalIndex: " + i + "playerIndex:" + j);
 			if (j == str.length() - 1) {
-	            return str.substring(0, i) + str.charAt(j) 
-	             + str.substring(i + 1, j) + str.charAt(i);
-	        }else {
-	        	System.out.println("not the last one");
-	            return str.substring(0, i) + str.charAt(j) 
-	            + str.substring(i + 1, j) + str.charAt(i)  
-	            + str.substring(j + 1, str.length());
-	        }
+				return str.substring(0, i) + str.charAt(j) + str.substring(i + 1, j) + str.charAt(i);
+			} else {
+				System.out.println("not the last one");
+				return str.substring(0, i) + str.charAt(j) + str.substring(i + 1, j) + str.charAt(i)
+						+ str.substring(j + 1, str.length());
+			}
 		}
 
-  
- 
-    }
+	}
 
-	
-	
 	public void loadLevel(final int lvlNum) {
 		System.out.println("getting level with SQL");
 		try {
@@ -74,10 +65,10 @@ public final class Model extends Observable implements IModel {
 	}
 
 	/**
-     * Gets the observable.
-     *
-     * @return the observable
-     */
+	 * Gets the observable.
+	 *
+	 * @return the observable
+	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -103,52 +94,53 @@ public final class Model extends Observable implements IModel {
 	public void movePlayer(int directionIndex) {
 		// TODO Auto-generated method stub
 		System.out.println("movePlayer called");
-		String lvlAsStr = level.getLevelAsString();
-		int x=1;
-		int xMax = 0;
-		int y=1;
-		int playerIndex;
-		int goalPlace;
-		for (int i = 0; i < lvlAsStr.length(); i++) {
-			if (lvlAsStr.charAt(i) == '\n') {
-				//System.out.println("That's a \\n");
-				y++;
-				xMax=x;
-				x=1;
-			}else if (lvlAsStr.charAt(i) == 's') {
-				//System.out.println("That's a \\r");
-				playerIndex = i;
-				//if (y>1) {
-				switch (directionIndex) {
-					case 5 :
-						goalPlace = ((y-2)*xMax)+x-1; //working properly
-						break;
-					case 2 :
-						int j=1;
-						while (lvlAsStr.charAt(j) == '\n') {
-							j++;
-							xMax++;
+		ArrayList<ArrayList<Character>> charList = level.getLevelAsList();
+		int newSXposition = 0;
+		int newSYPosition = 0;
+		int oldSXposition = 0;
+		int oldSYPosition = 0;
+		for (int i = 0; i < charList.size(); i++) {
+			for (int j = 0; j < charList.get(i).size(); j++) {
+				if (charList.get(i).get(j) == 's') {
+					collisionHandler cH = new collisionHandler();
+					if (cH.checkCollisionForPlayerPositionAndMovement(i, j, directionIndex, level) == true) {
+						switch (directionIndex) {
+						case 5:
+							newSXposition = j;
+							newSYPosition = i - 1;
+							oldSXposition = j;
+							oldSYPosition = i;
+							break;
+						case 2:
+							newSXposition = j;
+							newSYPosition = i + 1;
+							oldSXposition = j;
+							oldSYPosition = i;
+							break;
+						case 1:
+							newSXposition = j-1;
+							newSYPosition = i;
+							oldSXposition = j;
+							oldSYPosition = i;
+							break;
+						case 3:
+							newSXposition = j+1;
+							newSYPosition = i;
+							oldSXposition = j;
+							oldSYPosition = i;
+						default:
+							break;
 						}
-						goalPlace = ((y)*xMax)+x-1;
-						break;
-					case 1 : 
-						goalPlace = ((y-1)*xMax)+x-2;//working properly
-						break;
-					case 3 :
-						goalPlace = ((y-1)*xMax)+x;
-						break;
-					default:
-						goalPlace = playerIndex;
-						break;
+					}
+
 				}
-				level.setLevelAsString(this.swap(lvlAsStr,playerIndex,goalPlace));
-				this.setChanged();
-				this.notifyObservers();
-			}else{
-				x++;
 			}
-			
 		}
+		charList.get(oldSYPosition).set(oldSXposition, 't');
+		charList.get(newSYPosition).set((newSXposition), 's');
+		level.setLevelAsList(charList);
+		this.setChanged();
+		this.notifyObservers();
 	}
 
 }

@@ -1,5 +1,9 @@
 package entity;
 
+import java.io.IOException;
+import java.util.ArrayList; // import the ArrayList class
+
+
 public class level extends Entity {
 
 	/** The id. */
@@ -10,6 +14,8 @@ public class level extends Entity {
 
 	/** The message. */
 	private String	levelAsString;
+	
+	private ArrayList<ArrayList<Character> > charList = new ArrayList<ArrayList<Character> >();
 
 	/**
 	 * Instantiates a new level.
@@ -98,6 +104,7 @@ public class level extends Entity {
 	public String getLevelAsString() {
 		return this.levelAsString;
 	}
+
 	/**
 	 * Sets the level as String.
 	 *
@@ -106,5 +113,35 @@ public class level extends Entity {
 	 */
 	public void setLevelAsString(String levelAsString) {
 		this.levelAsString = levelAsString;
+		ArrayList<ArrayList<Character>> outer = new ArrayList<ArrayList<Character>>();
+	    ArrayList<Character> inner = new ArrayList<Character>();
+		for (int i = 0; i < this.levelAsString.length(); i++) {
+			if (this.levelAsString.charAt(i) == '\n') {
+				//System.out.println("That's a \\n");
+				inner.add(this.levelAsString.charAt(i));
+				outer.add(inner);
+				inner = new ArrayList<Character>();
+			}else {
+				inner.add(this.levelAsString.charAt(i));
+			}
+			
+		}
+		this.charList = outer;
+	}
+
+	public ArrayList<ArrayList<Character> > getLevelAsList() {
+		return charList;
+	}
+
+	public void setLevelAsList(ArrayList<ArrayList<Character> > charList) {
+		this.charList = charList;
+		String iWillBeLevelAsString = "";
+		for (int i = 0; i < this.charList.size(); i++){
+		    for (int j = 0; j < this.charList.get(i).size(); j++){
+		    	//System.out.println(iWillBeLevelAsString);
+		    	iWillBeLevelAsString = (String) iWillBeLevelAsString + this.charList.get(i).get(j);
+		    } 
+		}
+		this.levelAsString = iWillBeLevelAsString;
 	}
 }
