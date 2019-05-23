@@ -76,7 +76,6 @@ public final class Controller implements IController {
 		
 		switch (controllerOrder) {
 			case Up:
-				System.out.println("orderPerform Up");
 				this.model.movePlayer(5);
 				break;
 			case Down:

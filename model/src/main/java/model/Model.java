@@ -27,15 +27,37 @@ public final class Model extends Observable implements IModel {
 		this.level = new level();
 	}
 	
-	private String swap(String str, int j, int i) { 
-        System.out.println("Before :\n"+str+"\n goalIndex: "+i+"playerIndex:"+j);
-		if (j == str.length() - 1) 
-            return str.substring(0, i) + str.charAt(j) 
-             + str.substring(i + 1, j) + str.charAt(i); 
+	private String swap(String str, int i, int j) {
+		if (i < j) {
+	        System.out.println("Before :\n"+str+"\n goalIndex: "+i+"playerIndex:"+j);
+			if (j == str.length() - 1) {
+	            return str.substring(0, i) + str.charAt(j) 
+	             + str.substring(i + 1, j) + str.charAt(i);
+	        }else {
+	        	System.out.println("not the last one");
+	            return str.substring(0, i) + str.charAt(j) 
+	            + str.substring(i + 1, j) + str.charAt(i)  
+	            + str.substring(j + 1, str.length());
+	        }
+		}else {
+			int a;
+			a=j;
+			j=i;
+			i=a;
+	        System.out.println("Before :\n"+str+"\n goalIndex: "+i+"playerIndex:"+j);
+			if (j == str.length() - 1) {
+	            return str.substring(0, i) + str.charAt(j) 
+	             + str.substring(i + 1, j) + str.charAt(i);
+	        }else {
+	        	System.out.println("not the last one");
+	            return str.substring(0, i) + str.charAt(j) 
+	            + str.substring(i + 1, j) + str.charAt(i)  
+	            + str.substring(j + 1, str.length());
+	        }
+		}
+
   
-        return str.substring(0, i) + str.charAt(j) 
-               + str.substring(i + 1, j) + str.charAt(i)  
-               + str.substring(j + 1, str.length()); 
+ 
     }
 
 	
@@ -99,16 +121,18 @@ public final class Model extends Observable implements IModel {
 				//if (y>1) {
 				switch (directionIndex) {
 					case 5 :
-						goalPlace = ((y-2)*xMax)+x-1;
+						goalPlace = ((y-2)*xMax)+x-1; //working properly
 						break;
 					case 2 :
-						while (lvlAsStr.charAt(i) == '\n') {
+						int j=1;
+						while (lvlAsStr.charAt(j) == '\n') {
+							j++;
 							xMax++;
 						}
 						goalPlace = ((y)*xMax)+x-1;
 						break;
-					case 1 :
-						goalPlace = ((y-1)*xMax)+x-2;
+					case 1 : 
+						goalPlace = ((y-1)*xMax)+x-2;//working properly
 						break;
 					case 3 :
 						goalPlace = ((y-1)*xMax)+x;
