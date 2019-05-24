@@ -24,6 +24,8 @@ import entity.spriteEntity;
  */
 class ViewPanel extends JPanel implements Observer {
 
+	
+	final int spriteSize = 32;
 	/** The view frame. */
 	private ViewFrame viewFrame;
 	/** The Constant serialVersionUID. */
@@ -67,10 +69,7 @@ class ViewPanel extends JPanel implements Observer {
 	}
 	
 	public void drawMenu(Graphics2D _g2) {
-		ArrayList<ArrayList<Character> > charList = this.getViewFrame().getModel().getLevel().getLevelAsList();
-	    _g2.drawRect(charList.size()*16,charList.get(charList.size()-1).size()*16,10,10);  
-	    _g2.setColor(Color.RED);  
-	    _g2.fillRect(230,80,10,10);
+   
 	}
 
 	/*
@@ -93,11 +92,12 @@ class ViewPanel extends JPanel implements Observer {
 				x = 1;
 			} else if (lvlAsStr.charAt(i) == '\r') {
 				// System.out.println("That's a \\r");
+				//this is an useless char added at the end of the line for no reason
 			} else {
 				entity.spriteEntity _spriteEntity;
 				try {
-					_spriteEntity = new spriteEntity(lvlAsStr.charAt(i));
-					g2.drawImage(_spriteEntity.getMyPicture(), (x - 1) * 16, (y - 1) * 16, this);
+					_spriteEntity = new spriteEntity(Character.toLowerCase(lvlAsStr.charAt(i)));
+					g2.drawImage(_spriteEntity.getMyPicture(), ((x - 1) * spriteSize)-this.getViewFrame().getModel().getLevel().getPlayerPositionX()*spriteSize + this.getWidth()/2, ((y - 1) * spriteSize)-getViewFrame().getModel().getLevel().getPlayerPositionY()*spriteSize + this.getHeight()/2, this);
 				} catch (IOException e) {
 					System.out.println("Le fichier image n'a pas pu être correctement trouvé");
 					e.printStackTrace();
@@ -108,7 +108,9 @@ class ViewPanel extends JPanel implements Observer {
 			}
 
 		}
-		this.drawMenu(g2);
-		// System.out.println(lvlAsStr);
+		ArrayList<ArrayList<Character> > charList = this.getViewFrame().getModel().getLevel().getLevelAsList();
+		graphics.setColor(new Color(223,198,87));
+		graphics.fillRect(0,charList.size()*spriteSize,(charList.get(charList.size()-1).size()-2)*spriteSize,50);
+		//System.out.println(lvlAsStr);
 	}
 }

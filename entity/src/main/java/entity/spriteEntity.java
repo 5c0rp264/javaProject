@@ -20,6 +20,7 @@ public class spriteEntity {
 	private static BufferedImage wall;
 
 	public spriteEntity(char _associatedChar) throws IOException {
+		//System.out.println(_associatedChar);
 		this.associatedChar = _associatedChar;
 		switch (_associatedChar) {
 		case '#':
@@ -64,7 +65,7 @@ public class spriteEntity {
 				spriteEntity.setEnnemy(ImageIO.read(new File("../Ennemi.png")));
 			}
 			break;
-		case 'X':
+		case 'x':
 			// code exit
 			if (spriteEntity.getExit() == null) {
 				spriteEntity.setExit(ImageIO.read(new File("../Sortie.png")));
@@ -106,7 +107,7 @@ public class spriteEntity {
 		case 'e':
 			// code ennemy
 			return getEnnemy();
-		case 'X':
+		case 'x':
 			// code exit
 			return getExit();
 		case 'm':

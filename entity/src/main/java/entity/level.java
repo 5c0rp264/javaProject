@@ -17,6 +17,12 @@ public class level extends Entity {
 	
 	private int currentScore;
 	
+	private int playerPositionX;
+	
+	private int playerPositionY;
+	
+	private int diamondGot;
+	
 	private ArrayList<ArrayList<Character> > charList = new ArrayList<ArrayList<Character> >();
 
 	/**
@@ -118,16 +124,24 @@ public class level extends Entity {
 		this.levelAsString = levelAsString;
 		ArrayList<ArrayList<Character>> outer = new ArrayList<ArrayList<Character>>();
 	    ArrayList<Character> inner = new ArrayList<Character>();
+	    int x = 1;
+	    int y = 1;
 		for (int i = 0; i < this.levelAsString.length(); i++) {
 			if (this.levelAsString.charAt(i) == '\n') {
 				//System.out.println("That's a \\n");
 				inner.add(this.levelAsString.charAt(i));
 				outer.add(inner);
 				inner = new ArrayList<Character>();
+				y++;
+				x=1;
 			}else {
+		    	if (this.levelAsString.charAt(i) == 's') {
+		    		this.setPlayerPositionY(y);
+		    		this.setPlayerPositionX(x);
+		    	}
 				inner.add(this.levelAsString.charAt(i));
 			}
-			
+			x++;
 		}
 		this.charList = outer;
 	}
@@ -143,6 +157,10 @@ public class level extends Entity {
 		    for (int j = 0; j < this.charList.get(i).size(); j++){
 		    	//System.out.println(iWillBeLevelAsString);
 		    	iWillBeLevelAsString = (String) iWillBeLevelAsString + this.charList.get(i).get(j);
+		    	if (this.charList.get(i).get(j) == 's') {
+		    		this.setPlayerPositionY(i);
+		    		this.setPlayerPositionX(j);
+		    	}
 		    } 
 		}
 		this.levelAsString = iWillBeLevelAsString;
@@ -154,5 +172,29 @@ public class level extends Entity {
 
 	public void setCurrentScore(int currentScore) {
 		this.currentScore = currentScore;
+	}
+
+	public int getPlayerPositionX() {
+		return playerPositionX;
+	}
+
+	public void setPlayerPositionX(int playerPositionX) {
+		this.playerPositionX = playerPositionX;
+	}
+
+	public int getPlayerPositionY() {
+		return playerPositionY;
+	}
+
+	public void setPlayerPositionY(int playerPositionY) {
+		this.playerPositionY = playerPositionY;
+	}
+
+	public int getDiamondGot() {
+		return diamondGot;
+	}
+
+	public void setDiamondGot(int diamondGot) {
+		this.diamondGot = diamondGot;
 	}
 }

@@ -63,7 +63,8 @@ public final class Model extends Observable implements IModel {
 		try {
 			final DAOLevel leveldao = new DAOLevel(DBConnection.getInstance().getConnection());
 			this.setLevel(leveldao.find(lvlNum));
-			System.out.println(this.level.getLevelAsString());
+			//this.flagObserver();
+			System.out.println(leveldao.find(lvlNum).getLevelAsString());
 		} catch (final SQLException e) {
 			e.printStackTrace();
 		}
@@ -98,7 +99,7 @@ public final class Model extends Observable implements IModel {
 	@Override
 	public void movePlayer(int directionIndex) {
 		// TODO Auto-generated method stub
-		System.out.println("movePlayer called");
+		//System.out.println("movePlayer called");
 		ArrayList<ArrayList<Character>> charList = level.getLevelAsList();
 		int newSXposition = 0;
 		int newSYPosition = 0;
@@ -107,7 +108,7 @@ public final class Model extends Observable implements IModel {
 		for (int i = 0; i < charList.size(); i++) {
 			for (int j = 0; j < charList.get(i).size(); j++) {
 				if (charList.get(i).get(j) == 's') {
-					if (this.cH.checkCollisionForPlayerPositionAndMovement(i, j, directionIndex, level) == true) {
+					if (this.cH.checkCollisionForPlayerPositionAndMovement(i, j, directionIndex, level, this.model) == true) {
 						switch (directionIndex) {
 						case 5:
 							newSXposition = j;
@@ -146,7 +147,11 @@ public final class Model extends Observable implements IModel {
 			charList.get(newSYPosition).set((newSXposition), 's');
 			level.setLevelAsList(charList);
 			this.flagObserver();
+		}else {
+			cH.haveToReturnFalseForNewLevel = false;
 		}
+		
+		System.out.println("Level at the end of movePlayer:\n\n"+this.getLevel().getLevelAsString());
 		
 	}
 
