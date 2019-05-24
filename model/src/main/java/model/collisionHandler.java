@@ -61,6 +61,15 @@ public class collisionHandler {
 							charList.get(i+1).set((j), charList.get(i).get(j));
 							charList.get(i).set(j, 'c');
 						}
+						if (charList.get(i+1).get(j) == 'r' && charList.get(i).get(j) == 'r') {
+							if (charList.get(i+1).get(j-1) == 'c') {
+								charList.get(i+1).set((j-1), charList.get(i).get(j));
+								charList.get(i).set(j, 'c');
+							} else if (charList.get(i+1).get(j+1) == 'c') {
+								charList.get(i+1).set((j+1), charList.get(i).get(j));
+								charList.get(i).set(j, 'c');
+							}
+						}
 					}
 				}
 			}
