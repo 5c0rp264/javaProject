@@ -22,6 +22,7 @@ public final class Model extends Observable implements IModel {
 	/** The helloWorld. */
 	private level level;
 	private Model model = this;
+	private int diamond = 0;
 	collisionHandler cH = new collisionHandler();
 
 	/**
@@ -113,24 +114,36 @@ public final class Model extends Observable implements IModel {
 						case 5:
 							newSXposition = j;
 							newSYPosition = i - 1;
+							if (charList.get(newSXposition).get(newSYPosition)=='d') {
+								this.diamond++;
+							}
 							oldSXposition = j;
 							oldSYPosition = i;
 							break;
 						case 2:
 							newSXposition = j;
 							newSYPosition = i + 1;
+							if (charList.get(newSXposition).get(newSYPosition)=='d') {
+								this.diamond++;
+							}
 							oldSXposition = j;
 							oldSYPosition = i;
 							break;
 						case 1:
 							newSXposition = j-1;
 							newSYPosition = i;
+							if (charList.get(newSXposition).get(newSYPosition)=='d') {
+								this.diamond++;
+							}
 							oldSXposition = j;
 							oldSYPosition = i;
 							break;
 						case 3:
 							newSXposition = j+1;
 							newSYPosition = i;
+							if (charList.get(newSXposition).get(newSYPosition)=='d') {
+								this.diamond++;
+							}
 							oldSXposition = j;
 							oldSYPosition = i;
 							break;
