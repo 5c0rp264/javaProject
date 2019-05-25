@@ -39,11 +39,15 @@ public class collisionHandler {
 			if (theOneToReach == '#' || theOneToReach == 'r' || theOneToReach == 'm') {
 				return false;
 			} else if (theOneToReach == 'x') {
-				this.haveToReturnFalseForNewLevel = true;
+				//this.haveToReturnFalseForNewLevel = true;
 				_model.loadLevel(_level.getLevelID() + 1);
 				_model.flagObserver();
 				return false;
-			} else if (theOneToReach != 0) {
+			}else if (theOneToReach =='d') {
+				_model.setDiamond(_model.getDiamond() + 1);
+				System.out.println("Diamant : " + _model.getDiamond());
+				return true;
+			}else if (theOneToReach != 0) {
 				return true;
 			}
 			return false;

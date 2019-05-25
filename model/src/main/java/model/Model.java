@@ -60,6 +60,7 @@ public final class Model extends Observable implements IModel {
 	
 
 	public void loadLevel(final int lvlNum) {
+		this.diamond = 0;
 		System.out.println("getting level with SQL");
 		try {
 			final DAOLevel leveldao = new DAOLevel(DBConnection.getInstance().getConnection());
@@ -114,36 +115,24 @@ public final class Model extends Observable implements IModel {
 						case 5:
 							newSXposition = j;
 							newSYPosition = i - 1;
-							if (charList.get(newSXposition).get(newSYPosition)=='d') {
-								this.diamond++;
-							}
 							oldSXposition = j;
 							oldSYPosition = i;
 							break;
 						case 2:
 							newSXposition = j;
 							newSYPosition = i + 1;
-							if (charList.get(newSXposition).get(newSYPosition)=='d') {
-								this.diamond++;
-							}
 							oldSXposition = j;
 							oldSYPosition = i;
 							break;
 						case 1:
 							newSXposition = j-1;
 							newSYPosition = i;
-							if (charList.get(newSXposition).get(newSYPosition)=='d') {
-								this.diamond++;
-							}
 							oldSXposition = j;
 							oldSYPosition = i;
 							break;
 						case 3:
 							newSXposition = j+1;
 							newSYPosition = i;
-							if (charList.get(newSXposition).get(newSYPosition)=='d') {
-								this.diamond++;
-							}
 							oldSXposition = j;
 							oldSYPosition = i;
 							break;
@@ -160,12 +149,20 @@ public final class Model extends Observable implements IModel {
 			charList.get(newSYPosition).set((newSXposition), 's');
 			level.setLevelAsList(charList);
 			this.flagObserver();
-		}else {
+		}/*else {
 			cH.haveToReturnFalseForNewLevel = false;
-		}
+		}*/
 		
-		System.out.println("Level at the end of movePlayer:\n\n"+this.getLevel().getLevelAsString());
+		//System.out.println("Level at the end of movePlayer:\n\n"+this.getLevel().getLevelAsString());
 		
+	}
+
+	public int getDiamond() {
+		return diamond;
+	}
+
+	public void setDiamond(int diamond) {
+		this.diamond = diamond;
 	}
 
 }
