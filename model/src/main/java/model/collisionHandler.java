@@ -12,7 +12,7 @@ public class collisionHandler {
 		if (haveToReturnFalseForNewLevel == false) {
 			char theOneToReach = 0;
 			switch (behavior) {
-			case 5: //Have to add check on extremity to not except when I am at 1.qssssssss
+			case 5: //Have to add check on extremity to not except when I am at 1.
 				if (Character
 						.toLowerCase(charList.get(playerPositionY - 2).get(playerPositionX)) == 'c' && Character
 						.toLowerCase(charList.get(playerPositionY - 1).get(playerPositionX)) == 'r') {
