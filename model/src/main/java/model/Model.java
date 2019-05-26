@@ -101,7 +101,7 @@ public final class Model extends Observable implements IModel {
 	@Override
 	public void movePlayer(int directionIndex) {
 		// TODO Auto-generated method stub
-		//System.out.println("movePlayer called");
+		System.out.println("movePlayer called");
 		ArrayList<ArrayList<Character>> charList = level.getLevelAsList();
 		int newSXposition = 0;
 		int newSYPosition = 0;
@@ -110,7 +110,7 @@ public final class Model extends Observable implements IModel {
 		for (int i = 0; i < charList.size(); i++) {
 			for (int j = 0; j < charList.get(i).size(); j++) {
 				if (charList.get(i).get(j) == 's') {
-					if (this.cH.checkCollisionForPlayerPositionAndMovement(i, j, directionIndex, level, this.model) == true) {
+					if (this.cH.checkCollisionForPlayerPositionMovementAndPush(i, j, directionIndex, level, this.model, charList) == true) {
 						switch (directionIndex) {
 						case 5:
 							newSXposition = j;
