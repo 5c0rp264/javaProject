@@ -10,7 +10,7 @@ public class collisionHandler {
 			level _level, Model _model, ArrayList<ArrayList<Character>> charList ) {
 			char theOneToReach = 0;
 			switch (behavior) {
-			case 5: //Have to add check on extremity to not except when I am at 1.qssssssss
+			case 5: //Have to add check on extremity to not except when I am at 1.
 				if (Character
 						.toLowerCase(charList.get(playerPositionY - 2).get(playerPositionX)) == 'c' && Character
 						.toLowerCase(charList.get(playerPositionY - 1).get(playerPositionX)) == 'r') {
@@ -89,11 +89,11 @@ public class collisionHandler {
 						if (charList.get(i + 1).get(j) == 'c') {
 							charList.get(i + 1).set((j), Character.toUpperCase(charList.get(i).get(j)));
 							charList.get(i).set(j, 'c');
-						} else if (charList.get(i + 1).get(j) == 'r' && charList.get(i).get(j) == 'r') {
-							if (charList.get(i + 1).get(j - 1) == 'c') {
+						} else if ((Character.toLowerCase(charList.get(i + 1).get(j)) == 'r' || Character.toLowerCase(charList.get(i + 1).get(j)) == 'd') && charList.get(i).get(j) == 'r') {
+							if (charList.get(i + 1).get(j - 1) == 'c' && charList.get(i).get(j - 1) == 'c') {
 								charList.get(i + 1).set((j - 1), Character.toUpperCase(charList.get(i).get(j)));
 								charList.get(i).set(j, 'c');
-							} else if (charList.get(i + 1).get(j + 1) == 'c') {
+							} else if (charList.get(i + 1).get(j + 1) == 'c' && charList.get(i).get(j + 1) == 'c') {
 								charList.get(i + 1).set((j + 1), Character.toUpperCase(charList.get(i).get(j)));
 								charList.get(i).set(j, 'c');
 							}

@@ -1,9 +1,7 @@
 package model;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Observable;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -11,6 +9,14 @@ import java.util.TimerTask;
 import contract.IModel;
 import entity.level;
 import entity.spriteEntity;
+
+import javax.media.CannotRealizeException;
+import javax.media.Manager;
+import javax.media.NoPlayerException;
+import javax.media.Player;
+import java.net.*;
+import java.io.*;
+import java.util.*;
 
 /**
  * The Class Model.
@@ -30,45 +36,55 @@ public final class Model extends Observable implements IModel {
 	public Model() {
 		this.loadLevel(1);
 	}
-	
+
 	public void flagObserver() {
 		this.setChanged();
 		this.notifyObservers();
 	}
-	
-	
-	public void startTimerFallingObject(){
-	    TimerTask repeatedTask = new TimerTask() {
+
+	public void startTimerFallingObject() {
+		TimerTask repeatedTask = new TimerTask() {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				level.setCurrentScore(level.getCurrentScore()-1);
+				level.setCurrentScore(level.getCurrentScore() - 1);
 				System.out.println(level.getCurrentScore());
 				cH.makeEverythingFallDown(level, model);
 			}
-	    };
-	    Timer timer = new Timer("fallingObjectTimer");
-	     
-	    long delay  = 0;
-	    long period = 250;
-	    timer.scheduleAtFixedRate(repeatedTask, delay, period);
+		};
+		Timer timer = new Timer("fallingObjectTimer");
+
+		long delay = 0;
+		long period = 250;
+		timer.scheduleAtFixedRate(repeatedTask, delay, period);
 	}
-	
-	
-	
-	
 
 	public void loadLevel(final int lvlNum) {
 		System.out.println("getting level with SQL");
 		try {
 			final DAOLevel leveldao = new DAOLevel(DBConnection.getInstance().getConnection());
 			this.setLevel(leveldao.find(lvlNum));
-			//this.flagObserver();
+			// this.flagObserver();
 			System.out.println(leveldao.find(lvlNum).getLevelAsString());
 		} catch (final SQLException e) {
 			e.printStackTrace();
 		}
 		startTimerFallingObject();
+		
+		// Take the path of the audio file from command line
+
+		 File f=new File("../music.wav");
+		 Player audioplayer;
+		try {
+			audioplayer = Manager.createRealizedPlayer(f.toURI().toURL());
+			audioplayer.start();
+		} catch (NoPlayerException | CannotRealizeException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+		
 	}
 
 	/**
@@ -91,7 +107,9 @@ public final class Model extends Observable implements IModel {
 		return this.level;
 	}
 
+	
 	public void setLevel(level _level) {
+		//String bip = "‪music.mp3";
 		this.level = _level;
 		this.flagObserver();
 	}
@@ -109,7 +127,8 @@ public final class Model extends Observable implements IModel {
 		for (int i = 0; i < charList.size(); i++) {
 			for (int j = 0; j < charList.get(i).size(); j++) {
 				if (charList.get(i).get(j) == 's') {
-					if (this.cH.checkCollisionForPlayerPositionMovementAndPush(i, j, directionIndex, level, this.model, charList) == true) {
+					if (this.cH.checkCollisionForPlayerPositionMovementAndPush(i, j, directionIndex, level, this.model,
+							charList) == true) {
 						switch (directionIndex) {
 						case 5:
 							newSXposition = j;
@@ -124,13 +143,13 @@ public final class Model extends Observable implements IModel {
 							oldSYPosition = i;
 							break;
 						case 1:
-							newSXposition = j-1;
+							newSXposition = j - 1;
 							newSYPosition = i;
 							oldSXposition = j;
 							oldSYPosition = i;
 							break;
 						case 3:
-							newSXposition = j+1;
+							newSXposition = j + 1;
 							newSYPosition = i;
 							oldSXposition = j;
 							oldSYPosition = i;
@@ -148,12 +167,15 @@ public final class Model extends Observable implements IModel {
 			charList.get(newSYPosition).set((newSXposition), 's');
 			level.setLevelAsList(charList);
 			this.flagObserver();
-		}/*else {
-			cH.haveToReturnFalseForNewLevel = false;
-		}*/
-		
-		//System.out.println("Level at the end of movePlayer:\n\n"+this.getLevel().getLevelAsString());
-		
+		} /*
+			 * else { cH.haveToReturnFalseForNewLevel = false; }
+			 */
+
+		// System.out.println("Level at the end of
+		// movePlayer:\n\n"+this.getLevel().getLevelAsString());
+
 	}
+
+	
 
 }

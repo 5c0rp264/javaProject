@@ -127,6 +127,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	 */
 	private void buildViewFrame(final IModel model) {
 		this.setModel(model);
+		this.setTitle("Boulder Dash");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(true);
 		this.addKeyListener(this);
@@ -160,6 +161,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	public void keyPressed(final KeyEvent e) {
 		System.out.println("Keypressed");
 		this.getController().orderPerform(View.keyCodeToControllerOrder(e.getKeyCode()));
+		//this.fenetre();
 	}
 
 	/*

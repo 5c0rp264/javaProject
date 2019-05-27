@@ -148,16 +148,16 @@ public class spriteEntity {
 			// code spawn
 			switch (lastBehavior) {
 			case 5:
-				System.out.println("Going up");
+				//System.out.println("Going up");
 				return getHeroUp();
 			case 2:
-				System.out.println("Going down");
+				//System.out.println("Going down");
 				return getHeroDown();
 			case 1:
-				System.out.println("Going left");
+				//System.out.println("Going left");
 				return getHeroLeft();
 			case 3:
-				System.out.println("Going right");
+				//sSystem.out.println("Going right");
 				return getHeroRight();
 			default:
 				return getHeroDown();
