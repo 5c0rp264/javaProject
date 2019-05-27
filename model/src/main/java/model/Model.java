@@ -21,12 +21,13 @@ import java.io.*;
  *
  * @author Quentin AOUSTIN
  */
-public final class Model extends Observable implements IModel {
+public final class Model extends Observable implements IModel  {
 
 	/** The helloWorld. */
 	private level level;
 	private Model model = this;
 	collisionHandler cH = new collisionHandler();
+	private Player audioplayer;
 
 	/**
 	 * Instantiates a new model.
@@ -72,8 +73,10 @@ public final class Model extends Observable implements IModel {
 		// Take the path of the audio file from command line
 
 		 File f=new File("../music.wav");
-		 Player audioplayer;
 		try {
+			if (audioplayer != null) {
+				audioplayer.stop();
+			}
 			audioplayer = Manager.createRealizedPlayer(f.toURI().toURL());
 			audioplayer.start();
 		} catch (NoPlayerException | CannotRealizeException | IOException e) {
