@@ -14,7 +14,7 @@ import view.View;
  *
  * @author Quentin AOUSTIN
  */
-public abstract class Main {
+public class Main {
 
     /**
      * The main method.

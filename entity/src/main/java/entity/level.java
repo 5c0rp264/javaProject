@@ -35,11 +35,11 @@ public class level extends Entity {
 	 * @param _levelAsString
 	 *          levelAsString
 	 */
-	public level(final int _lvlId, final int _highScore, final String _levelAsString) {
+	public level(final int _lvlId, final int _highScore, final String _levelAsString, int maxTimeToDoLevel) {
 		this.setLevelID(_lvlId);
 		this.setHighScoreLevel(_highScore);
 		this.setLevelAsString(_levelAsString);
-		this.currentScore = 0;
+		this.currentScore = maxTimeToDoLevel*4;
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class level extends Entity {
 				"#ttttrdttrttttttttrttttttrtrdttttttrttt#\r\n" + 
 				"#tttcttrtcttrtrrtttttttttrtrdttttttcttr#\r\n" + 
 				"#tdttttctttttctttttttttctrttrttttrtttrt#\r\n" + 
-				"########################################\r\n");
+				"########################################\r\n", 500);
 	}
 
 	
@@ -197,4 +197,6 @@ public class level extends Entity {
 	public void setDiamondGot(int diamondGot) {
 		this.diamondGot = diamondGot;
 	}
+	
+	
 }

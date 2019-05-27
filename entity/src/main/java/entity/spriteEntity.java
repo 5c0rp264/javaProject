@@ -8,19 +8,36 @@ import javax.imageio.ImageIO;
 
 public class spriteEntity {
 
+	private static spriteEntity spriteEntityInstance = null;
 	char associatedChar;
 	private static BufferedImage border;
 	private static BufferedImage earth;
 	private static BufferedImage rock;
 	private static BufferedImage diamond;
 	private static BufferedImage way;
-	private static BufferedImage hero;
+	private static BufferedImage heroUp;
+	private static BufferedImage heroDown;
+	private static BufferedImage heroLeft;
+	private static BufferedImage heroRight;
 	private static BufferedImage ennemy;
 	private static BufferedImage exit;
 	private static BufferedImage wall;
 
-	public spriteEntity(char _associatedChar) throws IOException {
-		//System.out.println(_associatedChar);
+	private static int lastBehavior = 2;
+
+	public static spriteEntity getInstance() {
+		if (spriteEntity.spriteEntityInstance == null) {
+			spriteEntity.spriteEntityInstance = new spriteEntity();
+		}
+		return spriteEntity.spriteEntityInstance;
+	}
+
+	public spriteEntity() {
+		//spriteEntity.setLastBehavior(5);
+	}
+
+	public void setCorrepondingEntity(char _associatedChar) throws IOException {
+		// System.out.println(_associatedChar);
 		this.associatedChar = _associatedChar;
 		switch (_associatedChar) {
 		case '#':
@@ -55,8 +72,34 @@ public class spriteEntity {
 			break;
 		case 's':
 			// code spawn
-			if (spriteEntity.getHero() == null) {
-				spriteEntity.setHero(ImageIO.read(new File("../Hero.png")));
+			//System.out.println("\n\nHello\n\n\n");
+			switch (lastBehavior) {
+			case 5:
+				if (spriteEntity.getHeroUp() == null) {
+					spriteEntity.setHeroUp(ImageIO.read(new File("../HeroDos.png")));
+				}
+				//System.out.println("\n\nHello\n\n\n");
+				break;
+			case 2:
+				if (spriteEntity.getHeroDown() == null) {
+					spriteEntity.setHeroDown(ImageIO.read(new File("../HeroFace.png")));
+				}
+				break;
+			case 1:
+				if (spriteEntity.getHeroLeft() == null) {
+					spriteEntity.setHeroLeft(ImageIO.read(new File("../HeroGauche.png")));
+				}
+				break;
+			case 3:
+				if (spriteEntity.getHeroRight() == null) {
+					spriteEntity.setHeroRight(ImageIO.read(new File("../HeroDroite.png")));
+				}
+				break;
+			default:
+				if (spriteEntity.getHeroUp() == null) {
+					spriteEntity.setEnnemy(ImageIO.read(new File("../HeroDos.png")));
+				}
+				break;
 			}
 			break;
 		case 'e':
@@ -103,7 +146,22 @@ public class spriteEntity {
 			return getWay();
 		case 's':
 			// code spawn
-			return getHero();
+			switch (lastBehavior) {
+			case 5:
+				System.out.println("Going up");
+				return getHeroUp();
+			case 2:
+				System.out.println("Going down");
+				return getHeroDown();
+			case 1:
+				System.out.println("Going left");
+				return getHeroLeft();
+			case 3:
+				System.out.println("Going right");
+				return getHeroRight();
+			default:
+				return getHeroDown();
+			}
 		case 'e':
 			// code ennemy
 			return getEnnemy();
@@ -118,7 +176,6 @@ public class spriteEntity {
 		// code block
 		}
 	}
-
 
 	public static BufferedImage getBorder() {
 		return border;
@@ -160,14 +217,6 @@ public class spriteEntity {
 		spriteEntity.way = way;
 	}
 
-	public static BufferedImage getHero() {
-		return hero;
-	}
-
-	public static void setHero(BufferedImage hero) {
-		spriteEntity.hero = hero;
-	}
-
 	public static BufferedImage getEnnemy() {
 		return ennemy;
 	}
@@ -190,5 +239,45 @@ public class spriteEntity {
 
 	public static void setWall(BufferedImage wall) {
 		spriteEntity.wall = wall;
+	}
+
+	public static int getLastBehavior() {
+		return lastBehavior;
+	}
+
+	public static void setLastBehavior(int lastBehavior) {
+		spriteEntity.lastBehavior = lastBehavior;
+	}
+
+	public static BufferedImage getHeroUp() {
+		return heroUp;
+	}
+
+	public static void setHeroUp(BufferedImage heroUp) {
+		spriteEntity.heroUp = heroUp;
+	}
+
+	public static BufferedImage getHeroDown() {
+		return heroDown;
+	}
+
+	public static void setHeroDown(BufferedImage heroDown) {
+		spriteEntity.heroDown = heroDown;
+	}
+
+	public static BufferedImage getHeroRight() {
+		return heroRight;
+	}
+
+	public static void setHeroRight(BufferedImage heroRight) {
+		spriteEntity.heroRight = heroRight;
+	}
+
+	public static BufferedImage getHeroLeft() {
+		return heroLeft;
+	}
+
+	public static void setHeroLeft(BufferedImage heroLeft) {
+		spriteEntity.heroLeft = heroLeft;
 	}
 }

@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -79,8 +80,26 @@ class ViewPanel extends JPanel implements Observer {
 	 */
 	@Override
 	protected void paintComponent(final Graphics graphics) {
-		Graphics2D g2 = (Graphics2D) graphics;
+		super.paintComponent(graphics);
+		Graphics2D g2 = (Graphics2D) graphics;                           //Should work with arrayList and not String in the future
 		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
+
+		
+		//new spriteEntity();
+		entity.spriteEntity _spriteEntity = spriteEntity.getInstance();
+		for (int y = 0; y < (this.getHeight()/spriteSize)+1; y++) {//make a background to avoid to have a blank white one
+			for (int x = 0; x < (this.getWidth()/spriteSize)+1; x++) {
+				try {
+					_spriteEntity.setCorrepondingEntity('c');
+					g2.drawImage(_spriteEntity.getMyPicture(),x*spriteSize,y*spriteSize, this);
+					//System.out.println("Should print back");
+				} catch (IOException e) {
+					System.out.println("Le fichier image n'a pas pu être correctement trouvé");
+					e.printStackTrace();
+				}
+			}
+		}
+		
 		String lvlAsStr = this.getViewFrame().getModel().getLevel().getLevelAsString();
 		/* graphics.drawString( */
 		int x = 1;
@@ -94,9 +113,8 @@ class ViewPanel extends JPanel implements Observer {
 				// System.out.println("That's a \\r");
 				//this is an useless char added at the end of the line for no reason
 			} else {
-				entity.spriteEntity _spriteEntity;
 				try {
-					_spriteEntity = new spriteEntity(Character.toLowerCase(lvlAsStr.charAt(i)));
+					_spriteEntity.setCorrepondingEntity(Character.toLowerCase(lvlAsStr.charAt(i)));
 					g2.drawImage(_spriteEntity.getMyPicture(), ((x - 1) * spriteSize)-this.getViewFrame().getModel().getLevel().getPlayerPositionX()*spriteSize + this.getWidth()/2, ((y - 1) * spriteSize)-getViewFrame().getModel().getLevel().getPlayerPositionY()*spriteSize + this.getHeight()/2, this);
 				} catch (IOException e) {
 					System.out.println("Le fichier image n'a pas pu être correctement trouvé");
@@ -106,11 +124,43 @@ class ViewPanel extends JPanel implements Observer {
 				// System.out.println(lvlAsStr.charAt(i));
 				x++;
 			}
-
 		}
-		ArrayList<ArrayList<Character> > charList = this.getViewFrame().getModel().getLevel().getLevelAsList();
 		graphics.setColor(new Color(223,198,87));
-		graphics.fillRect(0,charList.size()*spriteSize,(charList.get(charList.size()-1).size()-2)*spriteSize,50);
+		graphics.fillRect(0,0,this.getWidth(),64);//making top bar background
+		
+		graphics.setColor(new Color(120,120,120));
+		graphics.fillRect(this.getWidth()/6,16,96,32);//background diamond
+		
+		graphics.setColor(new Color(255,255,255));
+		Font font = new Font("Verdana", Font.BOLD, 12);
+		graphics.setFont(font);
+		graphics.drawString(Integer.toString(this.getViewFrame().getModel().getLevel().getDiamondGot()), this.getWidth()/4,32+12/2);//number of diamond
+		
+		graphics.setColor(new Color(120,120,120));
+		font = new Font("Verdana", Font.BOLD, 16);
+		graphics.setFont(font);
+		graphics.drawString("Level "+Integer.toString(this.getViewFrame().getModel().getLevel().getLevelID()), this.getWidth()*5/6,32+12/2);//level X at the top right hand corner
+		
+		graphics.setColor(new Color(120,120,120));
+		graphics.fillRect(this.getWidth()/3,16,96,32);//background score
+		
+		graphics.setColor(new Color(255,255,255));
+		font = new Font("Verdana", Font.BOLD, 12);
+		graphics.setFont(font);
+		graphics.drawString(Integer.toString(this.getViewFrame().getModel().getLevel().getCurrentScore()/4), this.getWidth()*15/40,32+12/2);//score
+		
+
+		try {
+			_spriteEntity.setCorrepondingEntity('d');
+			g2.drawImage(_spriteEntity.getMyPicture(), this.getWidth()/5, 20, 24, 24, this); //diamond sprite
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+		
+//		ArrayList<ArrayList<Character> > charList = this.getViewFrame().getModel().getLevel().getLevelAsList();
+//		graphics.setColor(new Color(223,198,87));
+//		graphics.fillRect(0,charList.size()*spriteSize,(charList.get(charList.size()-1).size()-2)*spriteSize,50);
 		//System.out.println(lvlAsStr);
 	}
 }

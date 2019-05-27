@@ -5,14 +5,12 @@ import java.util.ArrayList;
 import entity.level;
 
 public class collisionHandler {
-	Boolean haveToReturnFalseForNewLevel = false;
 
 	public Boolean checkCollisionForPlayerPositionMovementAndPush(int playerPositionY, int playerPositionX, int behavior,
 			level _level, Model _model, ArrayList<ArrayList<Character>> charList ) {
-		if (haveToReturnFalseForNewLevel == false) {
 			char theOneToReach = 0;
 			switch (behavior) {
-			case 5: //Have to add check on extremity to not except when I am at 1.
+			case 5: //Have to add check on extremity to not except when I am at 1.qssssssss
 				if (Character
 						.toLowerCase(charList.get(playerPositionY - 2).get(playerPositionX)) == 'c' && Character
 						.toLowerCase(charList.get(playerPositionY - 1).get(playerPositionX)) == 'r') {
@@ -68,16 +66,13 @@ public class collisionHandler {
 				_model.flagObserver();
 				return false;
 			}else if (theOneToReach =='d') {
-				_model.setDiamond(_model.getDiamond() + 1);
-				System.out.println("Diamant : " + _model.getDiamond());
+				_model.getLevel().setDiamondGot(_model.getLevel().getDiamondGot() + 1);
+				System.out.println("Diamant : " + _model.getLevel().getDiamondGot());
 				return true;
 			}else if (theOneToReach != 0) {
 				return true;
 			}
 			return false;
-		}else {
-			return false;
-		}
 	}
 
 	public void makeEverythingFallDown(level _level, Model _model) {

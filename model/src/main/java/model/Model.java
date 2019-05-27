@@ -22,7 +22,6 @@ public final class Model extends Observable implements IModel {
 	/** The helloWorld. */
 	private level level;
 	private Model model = this;
-	private int diamond = 0;
 	collisionHandler cH = new collisionHandler();
 
 	/**
@@ -43,7 +42,7 @@ public final class Model extends Observable implements IModel {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				level.setCurrentScore(level.getCurrentScore()+1);
+				level.setCurrentScore(level.getCurrentScore()-1);
 				System.out.println(level.getCurrentScore());
 				cH.makeEverythingFallDown(level, model);
 			}
@@ -60,7 +59,6 @@ public final class Model extends Observable implements IModel {
 	
 
 	public void loadLevel(final int lvlNum) {
-		this.diamond = 0;
 		System.out.println("getting level with SQL");
 		try {
 			final DAOLevel leveldao = new DAOLevel(DBConnection.getInstance().getConnection());
@@ -107,6 +105,7 @@ public final class Model extends Observable implements IModel {
 		int newSYPosition = 0;
 		int oldSXposition = 0;
 		int oldSYPosition = 0;
+		spriteEntity.setLastBehavior(directionIndex);
 		for (int i = 0; i < charList.size(); i++) {
 			for (int j = 0; j < charList.get(i).size(); j++) {
 				if (charList.get(i).get(j) == 's') {
@@ -155,14 +154,6 @@ public final class Model extends Observable implements IModel {
 		
 		//System.out.println("Level at the end of movePlayer:\n\n"+this.getLevel().getLevelAsString());
 		
-	}
-
-	public int getDiamond() {
-		return diamond;
-	}
-
-	public void setDiamond(int diamond) {
-		this.diamond = diamond;
 	}
 
 }
