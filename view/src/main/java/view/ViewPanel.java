@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -162,5 +163,18 @@ class ViewPanel extends JPanel implements Observer {
 //		graphics.setColor(new Color(223,198,87));
 //		graphics.fillRect(0,charList.size()*spriteSize,(charList.get(charList.size()-1).size()-2)*spriteSize,50);
 		//System.out.println(lvlAsStr);
+	}
+	
+	public void Gameover(Graphics g){
+		try {
+			Image img = ImageIO.read(new File("gameover.png"));
+			g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Font font = new Font ("Courier", Font.BOLD, 28);
+		g.setFont(font);
+		g.setColor(Color.white);
+		g.drawString("Score :", 300, 200);
 	}
 }

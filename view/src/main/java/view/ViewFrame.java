@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 import contract.IController;
 import contract.IModel;
@@ -170,4 +170,15 @@ class ViewFrame extends JFrame implements KeyListener {
 	public void keyReleased(final KeyEvent e) {
 
 	}
+	
+	public void fenetre(){
+		this.setTitle("Game Over");
+		this.setSize(750, 500);
+		this.setLocationRelativeTo(null);
+		JPanel pan = new JPanel();
+		this.setContentPane(new ViewPanel(this));
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setVisible(true);
+	}
+
 }
