@@ -14,9 +14,7 @@ import javax.media.CannotRealizeException;
 import javax.media.Manager;
 import javax.media.NoPlayerException;
 import javax.media.Player;
-import java.net.*;
 import java.io.*;
-import java.util.*;
 
 /**
  * The Class Model.

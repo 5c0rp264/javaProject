@@ -58,7 +58,7 @@ public class collisionHandler {
 				break;
 
 			}
-			if (theOneToReach == '#' || theOneToReach == 'r' || theOneToReach == 'm') {
+			if (theOneToReach == '#' || theOneToReach == 'r' || theOneToReach == 'm' || theOneToReach == 'a' || theOneToReach == 'j' || theOneToReach == 'z' || theOneToReach == 'w' || theOneToReach == 'o' || theOneToReach == 'k') {
 				return false;
 			} else if (theOneToReach == 'x') {
 				//this.haveToReturnFalseForNewLevel = true;

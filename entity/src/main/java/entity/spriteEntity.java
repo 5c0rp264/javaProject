@@ -10,7 +10,13 @@ public class spriteEntity {
 
 	private static spriteEntity spriteEntityInstance = null;
 	char associatedChar;
-	private static BufferedImage border;
+	private static BufferedImage borderTopAndBottom;
+	private static BufferedImage borderLeft;
+	private static BufferedImage borderRight;
+	private static BufferedImage borderTopLeft;
+	private static BufferedImage borderTopRight;
+	private static BufferedImage borderBottomLeft;
+	private static BufferedImage borderBottomRight;
 	private static BufferedImage earth;
 	private static BufferedImage rock;
 	private static BufferedImage diamond;
@@ -42,8 +48,44 @@ public class spriteEntity {
 		switch (_associatedChar) {
 		case '#':
 			// code border
-			if (spriteEntity.getBorder() == null) {
-				spriteEntity.setBorder(ImageIO.read(new File("../Bordure.png")));
+			if (spriteEntity.getBorderTopAndBottom() == null) {
+				spriteEntity.setBorderTopAndBottom(ImageIO.read(new File("../Bordure face.png")));
+			}
+			break;
+		case 'a':
+			// code border
+			if (spriteEntity.getBorderLeft() == null) {
+				spriteEntity.setBorderLeft(ImageIO.read(new File("../Bordure gauche.png")));
+			}
+			break;
+		case 'j':
+			// code border
+			if (spriteEntity.getBorderRight() == null) {
+				spriteEntity.setBorderRight(ImageIO.read(new File("../Bordure droite.png")));
+			}
+			break;
+		case 'z':
+			// code border
+			if (spriteEntity.getBorderTopLeft() == null) {
+				spriteEntity.setBorderTopLeft(ImageIO.read(new File("../Bordure coin sup gauche.png")));
+			}
+			break;
+		case 'w':
+			// code border
+			if (spriteEntity.getBorderTopRight() == null) {
+				spriteEntity.setBorderTopRight(ImageIO.read(new File("../Bordure coin sup droit.png")));
+			}
+			break;
+		case 'o':
+			// code border
+			if (spriteEntity.getBorderBottomLeft() == null) {
+				spriteEntity.setBorderBottomLeft(ImageIO.read(new File("../Bordure coin inf gauche.png")));
+			}
+			break;
+		case 'k':
+			// code border
+			if (spriteEntity.getBorderBottomRight() == null) {
+				spriteEntity.setBorderBottomRight(ImageIO.read(new File("../Bordure coin inf droit.png")));
 			}
 			break;
 		case 't':
@@ -131,7 +173,25 @@ public class spriteEntity {
 		switch (this.associatedChar) {
 		case '#':
 			// code border
-			return getBorder();
+			return getBorderTopAndBottom();
+		case 'a':
+			// code border
+			return getBorderLeft();
+		case 'j':
+			// code border
+			return getBorderRight();
+		case 'z':
+			// code border
+			return getBorderTopLeft();
+		case 'w':
+			// code border
+			return getBorderTopRight();
+		case 'o':
+			// code border
+			return getBorderBottomLeft();
+		case 'k':
+			// code border
+			return getBorderBottomRight();
 		case 't':
 			// code earth
 			return getEarth();
@@ -177,12 +237,12 @@ public class spriteEntity {
 		}
 	}
 
-	public static BufferedImage getBorder() {
-		return border;
+	public static BufferedImage getBorderTopAndBottom() {
+		return borderTopAndBottom;
 	}
 
-	public static void setBorder(BufferedImage border) {
-		spriteEntity.border = border;
+	public static void setBorderTopAndBottom(BufferedImage border) {
+		spriteEntity.borderTopAndBottom = border;
 	}
 
 	public static BufferedImage getEarth() {
@@ -279,5 +339,53 @@ public class spriteEntity {
 
 	public static void setHeroLeft(BufferedImage heroLeft) {
 		spriteEntity.heroLeft = heroLeft;
+	}
+
+	public static BufferedImage getBorderLeft() {
+		return borderLeft;
+	}
+
+	public static void setBorderLeft(BufferedImage borderLeft) {
+		spriteEntity.borderLeft = borderLeft;
+	}
+
+	public static BufferedImage getBorderTopLeft() {
+		return borderTopLeft;
+	}
+
+	public static void setBorderTopLeft(BufferedImage borderTopLeft) {
+		spriteEntity.borderTopLeft = borderTopLeft;
+	}
+
+	public static BufferedImage getBorderRight() {
+		return borderRight;
+	}
+
+	public static void setBorderRight(BufferedImage borderRight) {
+		spriteEntity.borderRight = borderRight;
+	}
+
+	public static BufferedImage getBorderTopRight() {
+		return borderTopRight;
+	}
+
+	public static void setBorderTopRight(BufferedImage borderTopRight) {
+		spriteEntity.borderTopRight = borderTopRight;
+	}
+
+	public static BufferedImage getBorderBottomRight() {
+		return borderBottomRight;
+	}
+
+	public static void setBorderBottomRight(BufferedImage borderBottomRight) {
+		spriteEntity.borderBottomRight = borderBottomRight;
+	}
+
+	public static BufferedImage getBorderBottomLeft() {
+		return borderBottomLeft;
+	}
+
+	public static void setBorderBottomLeft(BufferedImage borderBottomLeft) {
+		spriteEntity.borderBottomLeft = borderBottomLeft;
 	}
 }
