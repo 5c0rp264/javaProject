@@ -28,6 +28,7 @@ public final class Model extends Observable implements IModel  {
 	private Model model = this;
 	collisionHandler cH = new collisionHandler();
 	private Player audioplayer;
+	private TimerTask repeatedTask;
 
 	/**
 	 * Instantiates a new model.
@@ -42,7 +43,10 @@ public final class Model extends Observable implements IModel  {
 	}
 
 	public void startTimerFallingObject() {
-		TimerTask repeatedTask = new TimerTask() {
+		if (repeatedTask != null) {
+			repeatedTask.cancel();
+		}
+		repeatedTask = new TimerTask() {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
