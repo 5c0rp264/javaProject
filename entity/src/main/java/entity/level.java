@@ -15,11 +15,13 @@ public class level extends Entity {
 	/** The message. */
 	private String	levelAsString;
 	
-	private int currentScore;
+	private int timeRemaining;
 	
 	private int playerPositionX;
 	
 	private int playerPositionY;
+	
+	private int minDiamond;
 	
 	private int diamondGot;
 	
@@ -37,11 +39,12 @@ public class level extends Entity {
 	 * @param _levelAsString
 	 *          levelAsString
 	 */
-	public level(final int _lvlId, final int _highScore, final String _levelAsString, int maxTimeToDoLevel) {
+	public level(final int _lvlId, final int _highScore, final String _levelAsString, int maxTimeToDoLevel, int minDiamond) {
 		this.setLevelID(_lvlId);
 		this.setHighScoreLevel(_highScore);
 		this.setLevelAsString(_levelAsString);
-		this.currentScore = (maxTimeToDoLevel+2)*4;
+		this.timeRemaining = (maxTimeToDoLevel+2)*4;
+		this.setMinDiamond(minDiamond);
 	}
 
 	/**
@@ -69,7 +72,7 @@ public class level extends Entity {
 				"#ttttrdttrttttttttrttttttrtrdttttttrttt#\r\n" + 
 				"#tttcttrtcttrtrrtttttttttrtrdttttttcttr#\r\n" + 
 				"#tdttttctttttctttttttttctrttrttttrtttrt#\r\n" + 
-				"########################################\r\n", 150);
+				"########################################\r\n", 150,12);
 	}
 
 	
@@ -168,12 +171,12 @@ public class level extends Entity {
 		this.levelAsString = iWillBeLevelAsString;
 	}
 
-	public int getCurrentScore() {
-		return currentScore;
+	public int getTimeRemaining() {
+		return timeRemaining;
 	}
 
-	public void setCurrentScore(int currentScore) {
-		this.currentScore = currentScore;
+	public void setTimeRemaining(int _timeRemaining) {
+		this.timeRemaining = _timeRemaining;
 	}
 
 	public int getPlayerPositionX() {
@@ -206,6 +209,14 @@ public class level extends Entity {
 
 	public void setDead(boolean isDead) {
 		this.isDead = isDead;
+	}
+
+	public int getMinDiamond() {
+		return minDiamond;
+	}
+
+	public void setMinDiamond(int minDiamond) {
+		this.minDiamond = minDiamond;
 	}
 	
 	

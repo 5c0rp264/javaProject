@@ -42,25 +42,47 @@ public final class Model extends Observable implements IModel  {
 		this.notifyObservers();
 	}
 
+	
+	
+	
+	
+	
 	public void startTimerFallingObject() {
 		if (repeatedTask != null) {
 			repeatedTask.cancel();
 		}
+		
+		
+		
 		repeatedTask = new TimerTask() {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				level.setCurrentScore(level.getCurrentScore() - 1);
-				System.out.println(level.getCurrentScore());
-				cH.makeEverythingFallDownAndEnnemyMove(level, model);
+				if (level.getTimeRemaining() <= 0) {
+					level.setDead(true);
+					model.flagObserver();
+				}else {
+					level.setTimeRemaining(level.getTimeRemaining() - 1);
+					System.out.println(level.getTimeRemaining());
+					cH.makeEverythingFallDownAndEnnemyMove(level, model);
+					if (level.getDiamondGot()>= level.getMinDiamond()) {
+						spriteEntity.setEnoughDiamond(true);
+					}
+				}
 			}
 		};
+		
+		
+		
 		Timer timer = new Timer("fallingObjectTimer");
-
 		long delay = 0;
 		long period = 250;
 		timer.scheduleAtFixedRate(repeatedTask, delay, period);
 	}
+	
+	
+	
+	
 
 	public void loadLevel(final int lvlNum) {
 		System.out.println("getting level with SQL");
@@ -86,7 +108,7 @@ public final class Model extends Observable implements IModel  {
 			e.printStackTrace();
 		}
 
-
+		spriteEntity.setEnoughDiamond(false);
 		
 	}
 

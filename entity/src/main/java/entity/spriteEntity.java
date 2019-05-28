@@ -27,9 +27,11 @@ public class spriteEntity {
 	private static BufferedImage heroRight;
 	private static BufferedImage ennemy;
 	private static BufferedImage exit;
+	private static BufferedImage exitClosed;
 	private static BufferedImage wall;
 
 	private static int lastBehavior = 2;
+	private static boolean enoughDiamond = false;
 
 	public static spriteEntity getInstance() {
 		if (spriteEntity.spriteEntityInstance == null) {
@@ -152,8 +154,14 @@ public class spriteEntity {
 			break;
 		case 'x':
 			// code exit
-			if (spriteEntity.getExit() == null) {
-				spriteEntity.setExit(ImageIO.read(new File("../Sortie.png")));
+			if (spriteEntity.isEnoughDiamond()) {
+				if (spriteEntity.getExit() == null) {
+					spriteEntity.setExit(ImageIO.read(new File("../Sortie ouverte.png")));
+				}
+			}else {
+				if (spriteEntity.getExitClosed() == null) {
+					spriteEntity.setExitClosed(ImageIO.read(new File("../Sortie fermee.png")));
+				}
 			}
 			break;
 		case 'm':
@@ -227,7 +235,11 @@ public class spriteEntity {
 			return getEnnemy();
 		case 'x':
 			// code exit
-			return getExit();
+			if (spriteEntity.isEnoughDiamond()) {
+				return getExit();
+			}else {
+				return getExitClosed();
+			}
 		case 'm':
 			// code wall
 			return getWall();
@@ -387,5 +399,21 @@ public class spriteEntity {
 
 	public static void setBorderBottomLeft(BufferedImage borderBottomLeft) {
 		spriteEntity.borderBottomLeft = borderBottomLeft;
+	}
+
+	public static boolean isEnoughDiamond() {
+		return spriteEntity.enoughDiamond;
+	}
+
+	public static void setEnoughDiamond(boolean enoughDiamond) {
+		spriteEntity.enoughDiamond = enoughDiamond;
+	}
+
+	public static BufferedImage getExitClosed() {
+		return exitClosed;
+	}
+
+	public static void setExitClosed(BufferedImage exitClosed) {
+		spriteEntity.exitClosed = exitClosed;
 	}
 }

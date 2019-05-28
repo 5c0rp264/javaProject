@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 
 import entity.level;
+import entity.spriteEntity;
 
 public class collisionHandler {
 	
@@ -59,8 +60,10 @@ public class collisionHandler {
 			return false;
 		} else if (theOneToReach == 'x') {
 			// this.haveToReturnFalseForNewLevel = true;
-			_model.loadLevel(_level.getLevelID() + 1);
-			_model.flagObserver();
+			if (_level.getDiamondGot()>= _level.getMinDiamond()) {
+				_model.loadLevel(_level.getLevelID() + 1);
+				_model.flagObserver();
+			}
 			return false;
 		} else if (theOneToReach == 'd') {
 			_model.getLevel().setDiamondGot(_model.getLevel().getDiamondGot() + 1);

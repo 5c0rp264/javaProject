@@ -137,7 +137,7 @@ class ViewPanel extends JPanel implements Observer {
 		graphics.setColor(new Color(255,255,255));
 		Font font = new Font("Verdana", Font.BOLD, 12);
 		graphics.setFont(font);
-		graphics.drawString(Integer.toString(this.getViewFrame().getModel().getLevel().getDiamondGot()), this.getWidth()/4,32+12/2);//number of diamond
+		graphics.drawString(Integer.toString(this.getViewFrame().getModel().getLevel().getDiamondGot())+"/"+Integer.toString(this.getViewFrame().getModel().getLevel().getMinDiamond()), (this.getWidth()*9)/40,32+12/2);//number of diamond
 		
 		graphics.setColor(new Color(120,120,120));
 		font = new Font("Verdana", Font.BOLD, 16);
@@ -150,12 +150,12 @@ class ViewPanel extends JPanel implements Observer {
 		graphics.setColor(new Color(255,255,255));
 		font = new Font("Verdana", Font.BOLD, 12);
 		graphics.setFont(font);
-		graphics.drawString(Integer.toString(this.getViewFrame().getModel().getLevel().getCurrentScore()/4), this.getWidth()*15/40,32+12/2);//score
+		graphics.drawString(Integer.toString(this.getViewFrame().getModel().getLevel().getTimeRemaining()/4), this.getWidth()*15/40,32+12/2);//score
 		
 
 		try {
 			_spriteEntity.setCorrepondingEntity('d');
-			g2.drawImage(_spriteEntity.getMyPicture(), this.getWidth()/5, 20, 24, 24, this); //diamond sprite
+			g2.drawImage(_spriteEntity.getMyPicture(), this.getWidth()*7/40, 20, 24, 24, this); //diamond sprite
 		} catch (IOException e) {
 
 			e.printStackTrace();
@@ -170,7 +170,7 @@ class ViewPanel extends JPanel implements Observer {
 		}
 	}
 	
-	public void Gameover(Graphics g){
+	/*public void Gameover(Graphics g){
 		try {
 			Image img = ImageIO.read(new File("gameover.png"));
 			g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
@@ -181,5 +181,5 @@ class ViewPanel extends JPanel implements Observer {
 		g.setFont(font);
 		g.setColor(Color.white);
 		g.drawString("Score :", 300, 200);
-	}
+	}*/
 }
