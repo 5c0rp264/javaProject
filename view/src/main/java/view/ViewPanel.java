@@ -130,7 +130,7 @@ class ViewPanel extends JPanel implements Observer {
 		graphics.fillRect(0,0,this.getWidth(),64);//making top bar background
 		
 		graphics.setColor(new Color(120,120,120));
-		graphics.fillRect(this.getWidth()/6,16,96,32);//background diamond
+		graphics.fillRect(this.getWidth()/6,16,this.getWidth()/8,32);//background diamond
 		
 		graphics.setColor(new Color(255,255,255));
 		Font font = new Font("Verdana", Font.BOLD, 12);
@@ -143,7 +143,7 @@ class ViewPanel extends JPanel implements Observer {
 		graphics.drawString("Level "+Integer.toString(this.getViewFrame().getModel().getLevel().getLevelID()), this.getWidth()*5/6,32+12/2);//level X at the top right hand corner
 		
 		graphics.setColor(new Color(120,120,120));
-		graphics.fillRect(this.getWidth()/3,16,96,32);//background score
+		graphics.fillRect(this.getWidth()/3,16,this.getWidth()/8,32);//background score
 		
 		graphics.setColor(new Color(255,255,255));
 		font = new Font("Verdana", Font.BOLD, 12);

@@ -1,15 +1,14 @@
 package model;
 
 import java.util.ArrayList;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+
 
 import entity.level;
 
 public class collisionHandler {
 	
-
+	private int lastPurposeMonster = 5;
+	private boolean shouldBeLowerCase = true;
 	public Boolean checkCollisionForPlayerPositionMovementAndPush(int playerPositionY, int playerPositionX,
 			int behavior, level _level, Model _model, ArrayList<ArrayList<Character>> charList) {
 		char theOneToReach = 0;
@@ -73,60 +72,107 @@ public class collisionHandler {
 		return false;
 	}
 
-	public void makeEverythingFallDown(level _level, Model _model) {
+	public void makeEverythingFallDownAndEnnemyMove(level _level, Model _model) {
+		System.out.println(_level.getLevelAsString());
 		ArrayList<ArrayList<Character>> charList = _level.getLevelAsList();
+		boolean beahviorChanged = false;
 		for (int i = charList.size() - 2; i >= 0; i--) {
-			// System.out.println("i="+i);
 			for (int j = charList.get(i).size() - 1; j >= 0; j--) {
-				// System.out.println("j="+j);
-				// System.out.println("char ="+charList.get(i).get(j));
-				// if (i < charList.size() - 1) {
 				if (charList.get(i).get(j) != 't' && charList.get(i).get(j) != 's' && charList.get(i).get(j) != '#'
 						&& charList.get(i).get(j) != 'x' && charList.get(i).get(j) != 'm'
 						&& charList.get(i).get(j) != 's' && charList.get(i).get(j) != 'c') {
-					if (charList.get(i + 1).get(j) == 'c') {
+					if (charList.get(i + 1).get(j) == 'c'  && Character.toLowerCase(charList.get(i).get(j)) != 'e') {//make any sprite fall down if there is a way under
 						charList.get(i + 1).set((j), Character.toUpperCase(charList.get(i).get(j)));
 						charList.get(i).set(j, 'c');
 					} else if ((Character.toLowerCase(charList.get(i + 1).get(j)) == 'r'
-							|| Character.toLowerCase(charList.get(i + 1).get(j)) == 'd')
-							&& charList.get(i).get(j) == 'r') {
-						if (charList.get(i + 1).get(j - 1) == 'c' && charList.get(i).get(j - 1) == 'c') {
+							|| Character.toLowerCase(charList.get(i + 1).get(j)) == 'd')// make rock fall aside of diamond or other rock
+							&& charList.get(i).get(j) == 'r') { 
+						if (charList.get(i + 1).get(j - 1) == 'c' && charList.get(i).get(j - 1) == 'c') { // fall left
 							charList.get(i + 1).set((j - 1), Character.toUpperCase(charList.get(i).get(j)));
 							charList.get(i).set(j, 'c');
-						} else if (charList.get(i + 1).get(j + 1) == 'c' && charList.get(i).get(j + 1) == 'c') {
+						} else if (charList.get(i + 1).get(j + 1) == 'c' && charList.get(i).get(j + 1) == 'c') {// fall right
 							charList.get(i + 1).set((j + 1), Character.toUpperCase(charList.get(i).get(j)));
 							charList.get(i).set(j, 'c');
 						}
-					} else if (charList.get(i + 1).get(j) == 's'
-							&& Character.isUpperCase(charList.get(i).get(j)) == true) {
-//						final JFrame parent = new JFrame();
-//				        JButton button = new JButton();
-//
-//				        button.setText("You died, click to restart!");
-//				        parent.add(button);
-//				        parent.pack();
-//				        parent.setVisible(true);
-				        /*collisionHandler.stopThread = true;
-				        while (collisionHandler.stopThread == true) {
-				        }*/
-
-//				        button.addActionListener(new java.awt.event.ActionListener() {
-//				            @Override
-//				            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//				            	
-//				            }
-//				        });
-						System.out.println("");
+					} else if (Character.toLowerCase(charList.get(i).get(j)) == 'e') { //animate if this is an ennemy
+						switch (this.lastPurposeMonster) {
+						case 5:
+							if (charList.get(i-1).get(j) == 'c' && charList.get(i).get(j) == 'e' && shouldBeLowerCase){
+								System.out.println("Move up1");
+								charList.get(i-1).set(j,'E');
+								charList.get(i).set(j,'c');
+							} else if (charList.get(i-1).get(j) == 'c' && charList.get(i).get(j) == 'E' && !shouldBeLowerCase){
+								System.out.println("Move up2");
+								charList.get(i-1).set(j,'e');
+								charList.get(i).set(j,'c');
+							}else if (beahviorChanged == false) {
+								this.lastPurposeMonster = 1;
+								beahviorChanged = true;
+							}
+							break;
+						case 2:
+							if (charList.get(i+1).get(j) == 'c' && charList.get(i).get(j) == 'e' && shouldBeLowerCase){
+								System.out.println("Move down");
+								charList.get(i+1).set(j,'E');
+								charList.get(i).set(j,'c');
+							}else if (charList.get(i+1).get(j) == 'c' && charList.get(i).get(j) == 'E' && !shouldBeLowerCase){
+								System.out.println("Move down");
+								charList.get(i+1).set(j,'e');
+								charList.get(i).set(j,'c');
+							}else if (beahviorChanged == false) {
+								this.lastPurposeMonster = 3;
+								beahviorChanged = true;
+							}
+							break;
+						case 1:
+							if (charList.get(i).get(j-1) == 'c' && charList.get(i).get(j) == 'e' && shouldBeLowerCase){
+								System.out.println("Move left");
+								charList.get(i).set(j-1,'E');
+								charList.get(i).set(j,'c');
+							}else if (charList.get(i).get(j-1) == 'c' && charList.get(i).get(j) == 'E' && !shouldBeLowerCase){
+								System.out.println("Move left");
+								charList.get(i).set(j-1,'e');
+								charList.get(i).set(j,'c');
+							}else if (beahviorChanged == false) {
+								this.lastPurposeMonster = 2;
+								beahviorChanged = true;
+							}
+							break;
+						case 3:
+							if (charList.get(i).get(j+1) == 'c' && charList.get(i).get(j) == 'e' && shouldBeLowerCase){
+								System.out.println("Move right");
+								charList.get(i).set(j+1,'E');
+								charList.get(i).set(j,'c');
+							}else if (charList.get(i).get(j+1) == 'c' && charList.get(i).get(j) == 'E' && !shouldBeLowerCase){
+								System.out.println("Move right");
+								charList.get(i).set(j+1,'e');
+								charList.get(i).set(j,'c');
+							}else if (beahviorChanged == false) {
+								this.lastPurposeMonster = 5;
+								beahviorChanged = true;
+							}
+							break;
+						default :
+							break;
+						}
+					} else if (charList.get(i + 1).get(j) == 's' && Character.isUpperCase(charList.get(i).get(j)) == true) { // kill player if an UpperCase fall on him
+						
+						
+						
+						//This is the end of the game
+						System.out.println("You died");
+				        System.exit(0);
 				        
-					} else {
-						charList.get(i).set((j), Character.toLowerCase(charList.get(i).get(j)));
+				        
+				        
+					} else if (Character.toLowerCase(charList.get(i + 1).get(j)) != 'e'){
+						charList.get(i).set((j), Character.toLowerCase(charList.get(i).get(j))); //if can't fall down go lower case
 					}
 				}
-				// }
 			}
-			_level.setLevelAsList(charList);
-			_model.flagObserver();
 		}
+		_level.setLevelAsList(charList);
+		_model.flagObserver();
+		this.shouldBeLowerCase = !shouldBeLowerCase;
 	}
-
 }

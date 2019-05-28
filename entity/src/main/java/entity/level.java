@@ -58,7 +58,7 @@ public class level extends Entity {
 				"#ttdtttttrtttttcttttttttrrcrttrttttrttt#\r\n" + 
 				"#tttrttrtrttttttttttttttrctrttrtttttttt#\r\n" + 
 				"#trtttttrttttttttrrrtttttttrttctdttttrt#\r\n" + 
-				"#tdttcttrtcctttttrtrdttdttttrtttrttdtct#\r\n" + 
+				"#tdttcttrtcctttttrtrdttdttttrtttrttdtct#\r\n" +
 				"#tcrttttttttttttttrcrttrttttttttdtttttr#\r\n" + 
 				"#ttttttttmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm#\r\n" + 
 				"#crtttttttttrtttdttttrtttttrtttrttttttt#\r\n" + 
@@ -67,7 +67,7 @@ public class level extends Entity {
 				"#ttttrdttrttttttttrttttttrtrdttttttrttt#\r\n" + 
 				"#tttcttrtcttrtrrtttttttttrtrdttttttcttr#\r\n" + 
 				"#tdttttctttttctttttttttctrttrttttrtttrt#\r\n" + 
-				"########################################\r\n", 500);
+				"########################################\r\n", 150);
 	}
 
 	

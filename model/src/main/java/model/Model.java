@@ -48,7 +48,7 @@ public final class Model extends Observable implements IModel  {
 				// TODO Auto-generated method stub
 				level.setCurrentScore(level.getCurrentScore() - 1);
 				System.out.println(level.getCurrentScore());
-				cH.makeEverythingFallDown(level, model);
+				cH.makeEverythingFallDownAndEnnemyMove(level, model);
 			}
 		};
 		Timer timer = new Timer("fallingObjectTimer");
