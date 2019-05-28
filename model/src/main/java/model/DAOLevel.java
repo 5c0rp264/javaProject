@@ -43,7 +43,7 @@ public class DAOLevel extends DAOEntity<level> {
 			final ResultSet resultSet = call.getResultSet();
 			if (resultSet.first()) {
 				_level = new level(numLevel, resultSet.getInt("highScore"), resultSet.getString("levelAsTxt"), resultSet.getInt("maxTimeToDoLevel"), resultSet.getInt("minDiams"));
-				System.out.println(resultSet.getString("levelAsTxt"));
+				//System.out.println(resultSet.getString("levelAsTxt"));
 			}
 			return _level;
 		} catch (final SQLException e) {

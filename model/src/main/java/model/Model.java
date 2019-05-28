@@ -61,9 +61,10 @@ public final class Model extends Observable implements IModel  {
 				if (level.getTimeRemaining() <= 0) {
 					level.setDead(true);
 					model.flagObserver();
+					repeatedTask.cancel();
 				}else {
 					level.setTimeRemaining(level.getTimeRemaining() - 1);
-					System.out.println(level.getTimeRemaining());
+					//System.out.println(level.getTimeRemaining());
 					cH.makeEverythingFallDownAndEnnemyMove(level, model);
 					if (level.getDiamondGot()>= level.getMinDiamond()) {
 						spriteEntity.setEnoughDiamond(true);
@@ -85,12 +86,12 @@ public final class Model extends Observable implements IModel  {
 	
 
 	public void loadLevel(final int lvlNum) {
-		System.out.println("getting level with SQL");
+		//System.out.println("getting level with SQL");
 		try {
 			final DAOLevel leveldao = new DAOLevel(DBConnection.getInstance().getConnection());
 			this.setLevel(leveldao.find(lvlNum));
 			// this.flagObserver();
-			System.out.println(leveldao.find(lvlNum).getLevelAsString());
+			//System.out.println(leveldao.find(lvlNum).getLevelAsString());
 		} catch (final SQLException e) {
 			e.printStackTrace();
 		}
@@ -142,7 +143,7 @@ public final class Model extends Observable implements IModel  {
 	@Override
 	public void movePlayer(int directionIndex) {
 		// TODO Auto-generated method stub
-		System.out.println("movePlayer called");
+		//System.out.println("movePlayer called");
 		ArrayList<ArrayList<Character>> charList = level.getLevelAsList();
 		int newSXposition = 0;
 		int newSYPosition = 0;
