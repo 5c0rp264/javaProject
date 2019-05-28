@@ -1,6 +1,7 @@
 package contract;
 
 import java.util.Observable;
+import java.util.TimerTask;
 
 import entity.level;
 
@@ -36,5 +37,9 @@ public interface IModel {
 	level getLevel();
 
 	void movePlayer(int i);
+
+	void flagObserver();
+
+	TimerTask getRepeatedTask();
 
 }

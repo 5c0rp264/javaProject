@@ -52,6 +52,8 @@ public final class View implements IView, Runnable {
 				return ControllerOrder.Left;
 			case KeyEvent.VK_D:
 				return ControllerOrder.Right;
+			case KeyEvent.VK_SPACE:
+				return ControllerOrder.Die;
 			default:
 				//fail("Key not recognize");
 				return ControllerOrder.notTheRightKey;

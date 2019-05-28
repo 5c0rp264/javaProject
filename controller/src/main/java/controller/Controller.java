@@ -88,6 +88,9 @@ public final class Controller implements IController {
 			case Right:
 				this.model.movePlayer(3);
 				break;
+			case Die:
+				this.model.loadLevel(this.model.getLevel().getLevelID());
+				break;
 			default:
 				break;
 		}

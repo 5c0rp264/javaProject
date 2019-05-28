@@ -30,6 +30,10 @@ public final class Model extends Observable implements IModel  {
 	private Player audioplayer;
 	private TimerTask repeatedTask;
 
+	public TimerTask getRepeatedTask() {
+		return repeatedTask;
+	}
+
 	/**
 	 * Instantiates a new model.
 	 */
@@ -77,7 +81,7 @@ public final class Model extends Observable implements IModel  {
 		
 		Timer timer = new Timer("fallingObjectTimer");
 		long delay = 0;
-		long period = 250;
+		long period = 100;
 		timer.scheduleAtFixedRate(repeatedTask, delay, period);
 	}
 	
@@ -87,9 +91,10 @@ public final class Model extends Observable implements IModel  {
 
 	public void loadLevel(final int lvlNum) {
 		//System.out.println("getting level with SQL");
+
 		try {
 			final DAOLevel leveldao = new DAOLevel(DBConnection.getInstance().getConnection());
-			this.setLevel(leveldao.find(lvlNum));
+			this.setLevel(leveldao.find(4));
 			// this.flagObserver();
 			//System.out.println(leveldao.find(lvlNum).getLevelAsString());
 		} catch (final SQLException e) {
@@ -110,7 +115,7 @@ public final class Model extends Observable implements IModel  {
 		}
 
 		spriteEntity.setEnoughDiamond(false);
-		
+		cH.lastPurposeMonster = 5;
 	}
 
 	/**

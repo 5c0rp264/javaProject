@@ -8,7 +8,7 @@ import entity.level;
 
 public class collisionHandler {
 	
-	private int lastPurposeMonster = 5;
+	public int lastPurposeMonster = 5;
 	private boolean shouldBeLowerCase = true;
 	public Boolean checkCollisionForPlayerPositionMovementAndPush(int playerPositionY, int playerPositionX,
 			int behavior, level _level, Model _model, ArrayList<ArrayList<Character>> charList) {
