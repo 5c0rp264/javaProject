@@ -40,6 +40,7 @@ public class collisionHandler {
 			}
 			theOneToReach = Character.toLowerCase(charList.get(playerPositionY).get(playerPositionX - 1));
 			// System.out.println("The char is : " + theOneToReach);
+			//
 			break;
 		case 3:
 			if (Character.toLowerCase(charList.get(playerPositionY).get(playerPositionX + 2)) == 'c'
