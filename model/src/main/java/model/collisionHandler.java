@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 
 import entity.level;
-import entity.spriteEntity;
+//import entity.spriteEntity;
 
 public class collisionHandler {
 	
@@ -15,20 +15,20 @@ public class collisionHandler {
 		char theOneToReach = 0;
 		switch (behavior) {
 		case 5: // Have to add check on extremity to not except when I am at 1.
-			if (Character.toLowerCase(charList.get(playerPositionY - 2).get(playerPositionX)) == 'c'
+			/*if (Character.toLowerCase(charList.get(playerPositionY - 2).get(playerPositionX)) == 'c'
 					&& Character.toLowerCase(charList.get(playerPositionY - 1).get(playerPositionX)) == 'r') {
 				charList.get(playerPositionY - 2).set(playerPositionX, 'r');
 				charList.get(playerPositionY - 1).set(playerPositionX, 'c');
-			}
+			}*/
 			theOneToReach = Character.toLowerCase(charList.get(playerPositionY - 1).get(playerPositionX));
 			// System.out.println("The char is : " + theOneToReach);
 			break;
 		case 2:
-			if (Character.toLowerCase(charList.get(playerPositionY + 2).get(playerPositionX)) == 'c'
+			/*if (Character.toLowerCase(charList.get(playerPositionY + 2).get(playerPositionX)) == 'c'
 					&& Character.toLowerCase(charList.get(playerPositionY + 1).get(playerPositionX)) == 'r') {
 				charList.get(playerPositionY + 2).set(playerPositionX, 'r');
 				charList.get(playerPositionY + 1).set(playerPositionX, 'c');
-			}
+			}*/
 			theOneToReach = Character.toLowerCase(charList.get(playerPositionY + 1).get(playerPositionX));
 			// System.out.println("The char is : " + theOneToReach);
 			break;
@@ -67,7 +67,7 @@ public class collisionHandler {
 			return false;
 		} else if (theOneToReach == 'd') {
 			_model.getLevel().setDiamondGot(_model.getLevel().getDiamondGot() + 1);
-			System.out.println("Diamant : " + _model.getLevel().getDiamondGot());
+			//System.out.println("Diamant : " + _model.getLevel().getDiamondGot());
 			return true;
 		} else if (theOneToReach == 'e') {
 			initDeath(_level);
@@ -79,7 +79,7 @@ public class collisionHandler {
 	}
 
 	public void makeEverythingFallDownAndEnnemyMove(level _level, Model _model) {
-		System.out.println(_level.getLevelAsString());
+		//System.out.println(_level.getLevelAsString());
 		ArrayList<ArrayList<Character>> charList = _level.getLevelAsList();
 		boolean beahviorChanged = false;
 		for (int i = charList.size() - 2; i >= 0; i--) {
@@ -107,14 +107,14 @@ public class collisionHandler {
 								if (charList.get(i-1).get(j) == 's') {
 									initDeath(_level);
 								}
-								System.out.println("Move up1");
+								//System.out.println("Move up1");
 								charList.get(i-1).set(j,'E');
 								charList.get(i).set(j,'c');
 							} else if ((charList.get(i-1).get(j) == 'c' || charList.get(i-1).get(j) == 's') && charList.get(i).get(j) == 'E' && !shouldBeLowerCase){
 								if (charList.get(i-1).get(j) == 's') {
 									initDeath(_level);
 								}
-								System.out.println("Move up2");
+								//System.out.println("Move up2");
 								charList.get(i-1).set(j,'e');
 								charList.get(i).set(j,'c');
 							}else if (beahviorChanged == false) {
@@ -127,14 +127,14 @@ public class collisionHandler {
 								if (charList.get(i+1).get(j) == 's') {
 									initDeath(_level);
 								}
-								System.out.println("Move down");
+								//System.out.println("Move down");
 								charList.get(i+1).set(j,'E');
 								charList.get(i).set(j,'c');
 							}else if ((charList.get(i+1).get(j) == 'c' || charList.get(i+1).get(j) == 's') && charList.get(i).get(j) == 'E' && !shouldBeLowerCase){
 								if (charList.get(i+1).get(j) == 's') {
 									initDeath(_level);
 								}
-								System.out.println("Move down");
+								//System.out.println("Move down");
 								charList.get(i+1).set(j,'e');
 								charList.get(i).set(j,'c');
 							}else if (beahviorChanged == false) {
@@ -147,14 +147,14 @@ public class collisionHandler {
 								if (charList.get(i).get(j-1) == 's') {
 									initDeath(_level);
 								}
-								System.out.println("Move left");
+								//System.out.println("Move left");
 								charList.get(i).set(j-1,'E');
 								charList.get(i).set(j,'c');
 							}else if ((charList.get(i).get(j-1) == 'c' || charList.get(i).get(j-1) == 's') && charList.get(i).get(j) == 'E' && !shouldBeLowerCase){
 								if (charList.get(i).get(j-1) == 's') {
 									initDeath(_level);
 								}
-								System.out.println("Move left");
+								//System.out.println("Move left");
 								charList.get(i).set(j-1,'e');
 								charList.get(i).set(j,'c');
 							}else if (beahviorChanged == false) {
@@ -167,7 +167,7 @@ public class collisionHandler {
 								if (charList.get(i).get(j+1) == 's') {
 									initDeath(_level);
 								}
-								System.out.println("Move right");
+								//System.out.println("Move right");
 								charList.get(i).set(j+1,'E');
 								charList.get(i).set(j,'c');
 							}else if ((charList.get(i).get(j+1) == 'c'  || charList.get(i).get(j+1) == 's' )&& charList.get(i).get(j) == 'E' && !shouldBeLowerCase){
@@ -175,7 +175,7 @@ public class collisionHandler {
 									initDeath(_level);
 
 								}
-								System.out.println("Move right");
+								//System.out.println("Move right");
 								charList.get(i).set(j+1,'e');
 								charList.get(i).set(j,'c');
 							}else if (beahviorChanged == false) {
@@ -207,7 +207,7 @@ public class collisionHandler {
 	}
 	
 	private void initDeath(level _level) {
-		System.out.println("You died");
+		//System.out.println("You died");
 		_level.setDead(true);
         //System.exit(0);
 	}
