@@ -23,6 +23,8 @@ public class level extends Entity {
 	
 	private int diamondGot;
 	
+	private boolean isDead = false;
+	
 	private ArrayList<ArrayList<Character> > charList = new ArrayList<ArrayList<Character> >();
 
 	/**
@@ -39,7 +41,7 @@ public class level extends Entity {
 		this.setLevelID(_lvlId);
 		this.setHighScoreLevel(_highScore);
 		this.setLevelAsString(_levelAsString);
-		this.currentScore = maxTimeToDoLevel*4;
+		this.currentScore = (maxTimeToDoLevel+2)*4;
 	}
 
 	/**
@@ -196,6 +198,14 @@ public class level extends Entity {
 
 	public void setDiamondGot(int diamondGot) {
 		this.diamondGot = diamondGot;
+	}
+
+	public boolean isDead() {
+		return isDead;
+	}
+
+	public void setDead(boolean isDead) {
+		this.isDead = isDead;
 	}
 	
 	

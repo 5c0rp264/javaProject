@@ -29,7 +29,10 @@ public final class View implements IView, Runnable {
 		this.viewFrame = new ViewFrame(model);
 		SwingUtilities.invokeLater(this);
 	}
-
+	public void printMessage(final String message) {
+        
+        this.viewFrame.printMessage(message);
+    }
 	/**
 	 * Key code to controller order.
 	 *

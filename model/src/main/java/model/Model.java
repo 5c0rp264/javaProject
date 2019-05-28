@@ -70,9 +70,7 @@ public final class Model extends Observable implements IModel  {
 		}
 		startTimerFallingObject();
 		
-		// Take the path of the audio file from command line
-
-		 File f=new File("../music.wav");
+		File f=new File("../music.wav");
 		try {
 			if (audioplayer != null) {
 				audioplayer.stop();

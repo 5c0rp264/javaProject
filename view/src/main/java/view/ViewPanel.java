@@ -32,6 +32,8 @@ class ViewPanel extends JPanel implements Observer {
 	private ViewFrame viewFrame;
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -998294702363713521L;
+	
+	private boolean hasBeenNotifiedToStop = false;
 
 	/**
 	 * Instantiates a new view panel.
@@ -159,10 +161,13 @@ class ViewPanel extends JPanel implements Observer {
 			e.printStackTrace();
 		}
 		
-//		ArrayList<ArrayList<Character> > charList = this.getViewFrame().getModel().getLevel().getLevelAsList();
-//		graphics.setColor(new Color(223,198,87));
-//		graphics.fillRect(0,charList.size()*spriteSize,(charList.get(charList.size()-1).size()-2)*spriteSize,50);
-		//System.out.println(lvlAsStr);
+		if (this.getViewFrame().getModel().getLevel().isDead() && !hasBeenNotifiedToStop) {
+			hasBeenNotifiedToStop = true;
+            graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
+            this.viewFrame.printMessage("You died ! Try again...");
+            this.getViewFrame().getModel().loadLevel(this.getViewFrame().getModel().getLevel().getLevelID());
+            hasBeenNotifiedToStop = false;
+		}
 	}
 	
 	public void Gameover(Graphics g){

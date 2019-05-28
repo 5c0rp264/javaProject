@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import contract.IController;
@@ -66,6 +67,12 @@ class ViewFrame extends JFrame implements KeyListener {
 		this.buildViewFrame(model);
 	}
 
+	
+	public void printMessage(final String message) {
+        JOptionPane.showMessageDialog(null, message);
+    }
+	
+	
 	/**
 	 * Instantiates a new view frame.
 	 *
