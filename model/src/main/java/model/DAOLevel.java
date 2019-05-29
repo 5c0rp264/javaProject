@@ -8,29 +8,45 @@ import entity.level;
 
 public class DAOLevel extends DAOEntity<level> {
 
+	/**
+	 * @param connection
+	 * @throws SQLException
+	 */
 	public DAOLevel(Connection connection) throws SQLException {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 *
+	 */
 	@Override
 	public boolean create(level entity) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	/**
+	 *
+	 */
 	@Override
 	public boolean delete(level entity) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	/**
+	 *
+	 */
 	@Override
 	public boolean update(level entity) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	/**
+	 *
+	 */
 	@Override
 	public level find(int numLevel) {
 		level _level = null;

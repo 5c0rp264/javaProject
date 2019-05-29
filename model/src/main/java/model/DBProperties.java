@@ -12,22 +12,40 @@ import java.util.Properties;
 class DBProperties extends Properties {
 
 	/** The Constant serialVersionUID. */
+	/**
+	 * 
+	 */
 	private static final long		serialVersionUID			= 5289057445894568927L;
 
 	/** The Constant PROPERTIES_FILE_NAME. */
+	/**
+	 * 
+	 */
 	private final static String	PROPERTIES_FILE_NAME	= "model.properties";
 
 	/** The url. */
+	/**
+	 * 
+	 */
 	private String	url	= "jdbc:mysql://localhost:3306/jpublankproject?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
 
 	/** The login. */
+	/**
+	 * 
+	 */
 	private String login = "root";
 
 	/** The password. */
+	/**
+	 * 
+	 */
 	private String	password = "";
 
 	/**
 	 * Instantiates a new DB properties.
+	 */
+	/**
+	 * 
 	 */
 	public DBProperties() {
 		InputStream inputStream;
@@ -51,6 +69,9 @@ class DBProperties extends Properties {
 	 *
 	 * @return the url
 	 */
+	/**
+	 * @return
+	 */
 	public String getUrl() {
 		return this.url;
 	}
@@ -61,6 +82,9 @@ class DBProperties extends Properties {
 	 * @param url
 	 *          the new url
 	 */
+	/**
+	 * @param url
+	 */
 	private void setUrl(final String url) {
 		this.url = url;
 	}
@@ -69,6 +93,9 @@ class DBProperties extends Properties {
 	 * Gets the login.
 	 *
 	 * @return the login
+	 */
+	/**
+	 * @return
 	 */
 	public String getLogin() {
 		return this.login;
@@ -80,6 +107,9 @@ class DBProperties extends Properties {
 	 * @param login
 	 *          the new login
 	 */
+	/**
+	 * @param login
+	 */
 	private void setLogin(final String login) {
 		this.login = login;
 	}
@@ -88,6 +118,9 @@ class DBProperties extends Properties {
 	 * Gets the password.
 	 *
 	 * @return the password
+	 */
+	/**
+	 * @return
 	 */
 	public String getPassword() {
 		return this.password;
@@ -98,6 +131,9 @@ class DBProperties extends Properties {
 	 *
 	 * @param password
 	 *          the new password
+	 */
+	/**
+	 * @param password
 	 */
 	private void setPassword(final String password) {
 		this.password = password;

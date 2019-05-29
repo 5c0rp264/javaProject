@@ -8,8 +8,23 @@ import entity.level;
 
 public class collisionHandler {
 	
+	/**
+	 * 
+	 */
 	public int lastPurposeMonster = 5;
+	/**
+	 * 
+	 */
 	private boolean shouldBeLowerCase = true;
+	/**
+	 * @param playerPositionY
+	 * @param playerPositionX
+	 * @param behavior
+	 * @param _level
+	 * @param _model
+	 * @param charList
+	 * @return
+	 */
 	public Boolean checkCollisionForPlayerPositionMovementAndPush(int playerPositionY, int playerPositionX,
 			int behavior, level _level, Model _model, ArrayList<ArrayList<Character>> charList) {
 		char theOneToReach = 0;
@@ -79,6 +94,10 @@ public class collisionHandler {
 		return false;
 	}
 
+	/**
+	 * @param _level
+	 * @param _model
+	 */
 	public void makeEverythingFallDownAndEnnemyMove(level _level, Model _model) {
 		//System.out.println(_level.getLevelAsString());
 		ArrayList<ArrayList<Character>> charList = _level.getLevelAsList();
@@ -207,6 +226,9 @@ public class collisionHandler {
 		this.shouldBeLowerCase = !shouldBeLowerCase;
 	}
 	
+	/**
+	 * @param _level
+	 */
 	private void initDeath(level _level) {
 		//System.out.println("You died");
 		_level.setDead(true);

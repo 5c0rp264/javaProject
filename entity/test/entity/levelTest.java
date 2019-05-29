@@ -16,7 +16,7 @@ public class levelTest {
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		levelToTest = new level(1, 0, "ttttttttttttttttttttttttttttmttttttttttttttttttttttttttttttt\r\n" + 
+		levelToTest = new level(1, 5, "ttttttttttttttttttttttttttttmttttttttttttttttttttttttttttttt\r\n" + 
 				"tttttttttttttttttttttttttttmtmtttttttttttttttttttttttttttttt\r\n" + 
 				"tttrttttttrrttttttttttttttmtttmtttttttttttrrrrtttttttttrtttt\r\n" + 
 				"ttttttrtttrrtttttttttttttmtttttmttttttttttrrttttttrttrtttttt\r\n" + 

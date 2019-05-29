@@ -24,12 +24,30 @@ import java.io.*;
 public final class Model extends Observable implements IModel  {
 
 	/** The helloWorld. */
+	/**
+	 * 
+	 */
 	private level level;
+	/**
+	 * 
+	 */
 	private Model model = this;
+	/**
+	 * 
+	 */
 	collisionHandler cH = new collisionHandler();
+	/**
+	 * 
+	 */
 	private Player audioplayer;
+	/**
+	 * 
+	 */
 	private TimerTask repeatedTask;
 
+	/**
+	 *
+	 */
 	public TimerTask getRepeatedTask() {
 		return repeatedTask;
 	}
@@ -37,10 +55,16 @@ public final class Model extends Observable implements IModel  {
 	/**
 	 * Instantiates a new model.
 	 */
+	/**
+	 * 
+	 */
 	public Model() {
 		this.loadLevel(1);
 	}
 
+	/**
+	 *
+	 */
 	public void flagObserver() {
 		this.setChanged();
 		this.notifyObservers();
@@ -51,6 +75,9 @@ public final class Model extends Observable implements IModel  {
 	
 	
 	
+	/**
+	 * 
+	 */
 	public void startTimerFallingObject() {
 		if (repeatedTask != null) {
 			repeatedTask.cancel();
@@ -89,6 +116,9 @@ public final class Model extends Observable implements IModel  {
 	
 	
 
+	/**
+	 *
+	 */
 	public void loadLevel(final int lvlNum) {
 		//System.out.println("getting level with SQL");
 
@@ -116,6 +146,7 @@ public final class Model extends Observable implements IModel  {
 
 		spriteEntity.setEnoughDiamond(false);
 		cH.lastPurposeMonster = 5;
+
 	}
 
 	/**
@@ -128,10 +159,16 @@ public final class Model extends Observable implements IModel  {
 	 *
 	 * @see contract.IModel#getObservable()
 	 */
+	/**
+	 *
+	 */
 	public Observable getObservable() {
 		return this;
 	}
 
+	/**
+	 *
+	 */
 	@Override
 	public entity.level getLevel() {
 		// TODO Auto-generated method stub
@@ -139,12 +176,18 @@ public final class Model extends Observable implements IModel  {
 	}
 
 	
+	/**
+	 * @param _level
+	 */
 	public void setLevel(level _level) {
 		//String bip = "‪music.mp3";
 		this.level = _level;
 		this.flagObserver();
 	}
 
+	/**
+	 *
+	 */
 	@Override
 	public void movePlayer(int directionIndex) {
 		// TODO Auto-generated method stub

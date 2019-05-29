@@ -1,38 +1,112 @@
 package entity;
 
 import java.awt.image.BufferedImage;
+import java.io.CharConversionException;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+
 public class spriteEntity {
 
+	/**
+	 * 
+	 */
 	private static spriteEntity spriteEntityInstance = null;
+	/**
+	 * 
+	 */
 	char associatedChar;
+	/**
+	 * 
+	 */
 	private static BufferedImage borderTopAndBottom;
+	/**
+	 * 
+	 */
 	private static BufferedImage borderLeft;
+	/**
+	 * 
+	 */
 	private static BufferedImage borderRight;
+	/**
+	 * 
+	 */
 	private static BufferedImage borderTopLeft;
+	/**
+	 * 
+	 */
 	private static BufferedImage borderTopRight;
+	/**
+	 * 
+	 */
 	private static BufferedImage borderBottomLeft;
+	/**
+	 * 
+	 */
 	private static BufferedImage borderBottomRight;
+	/**
+	 * 
+	 */
 	private static BufferedImage earth;
+	/**
+	 * 
+	 */
 	private static BufferedImage rock;
+	/**
+	 * 
+	 */
 	private static BufferedImage diamond;
+	/**
+	 * 
+	 */
 	private static BufferedImage way;
+	/**
+	 * 
+	 */
 	private static BufferedImage heroUp;
+	/**
+	 * 
+	 */
 	private static BufferedImage heroDown;
+	/**
+	 * 
+	 */
 	private static BufferedImage heroLeft;
+	/**
+	 * 
+	 */
 	private static BufferedImage heroRight;
+	/**
+	 * 
+	 */
 	private static BufferedImage ennemy;
+	/**
+	 * 
+	 */
 	private static BufferedImage exit;
+	/**
+	 * 
+	 */
 	private static BufferedImage exitClosed;
+	/**
+	 * 
+	 */
 	private static BufferedImage wall;
 
+	/**
+	 * 
+	 */
 	private static int lastBehavior = 2;
+	/**
+	 * 
+	 */
 	private static boolean enoughDiamond = false;
 
+	/**
+	 * @return
+	 */
 	public static spriteEntity getInstance() {
 		if (spriteEntity.spriteEntityInstance == null) {
 			spriteEntity.spriteEntityInstance = new spriteEntity();
@@ -40,11 +114,19 @@ public class spriteEntity {
 		return spriteEntity.spriteEntityInstance;
 	}
 
+	/**
+	 * 
+	 */
 	public spriteEntity() {
 		//spriteEntity.setLastBehavior(5);
 	}
 
-	public void setCorrepondingEntity(char _associatedChar) throws IOException {
+	/**
+	 * @param _associatedChar
+	 * @throws IOException
+	 * @throws CharConversionException
+	 */
+	public void setCorrepondingEntity(char _associatedChar) throws IOException, CharConversionException {
 		// System.out.println(_associatedChar);
 		this.associatedChar = _associatedChar;
 		switch (_associatedChar) {
@@ -171,12 +253,14 @@ public class spriteEntity {
 			}
 			break;
 		default:
-			break;
-		// code block
+			throw new CharConversionException("This char doesn't exist");
 		}
 
 	}
 
+	/**
+	 * @return BufferedImage image associated
+	 */
 	public BufferedImage getMyPicture() {
 		switch (this.associatedChar) {
 		case '#':
@@ -249,170 +333,315 @@ public class spriteEntity {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public static BufferedImage getBorderTopAndBottom() {
 		return borderTopAndBottom;
 	}
 
+	/**
+	 * @param border
+	 */
 	public static void setBorderTopAndBottom(BufferedImage border) {
 		spriteEntity.borderTopAndBottom = border;
 	}
 
+	/**
+	 * @return
+	 */
 	public static BufferedImage getEarth() {
 		return earth;
 	}
 
+	/**
+	 * @param earth
+	 */
 	public static void setEarth(BufferedImage earth) {
 		spriteEntity.earth = earth;
 	}
 
+	/**
+	 * @return
+	 */
 	public static BufferedImage getDiamond() {
 		return diamond;
 	}
 
+	/**
+	 * @param diamond
+	 */
 	public static void setDiamond(BufferedImage diamond) {
 		spriteEntity.diamond = diamond;
 	}
 
+	/**
+	 * @return
+	 */
 	public static BufferedImage getRock() {
 		return rock;
 	}
 
+	/**
+	 * @param rock
+	 */
 	public static void setRock(BufferedImage rock) {
 		spriteEntity.rock = rock;
 	}
 
+	/**
+	 * @return
+	 */
 	public static BufferedImage getWay() {
 		return way;
 	}
 
+	/**
+	 * @param way
+	 */
 	public static void setWay(BufferedImage way) {
 		spriteEntity.way = way;
 	}
 
+	/**
+	 * @return
+	 */
 	public static BufferedImage getEnnemy() {
 		return ennemy;
 	}
 
+	/**
+	 * @param ennemy
+	 */
 	public static void setEnnemy(BufferedImage ennemy) {
 		spriteEntity.ennemy = ennemy;
 	}
 
+	/**
+	 * @return
+	 */
 	public static BufferedImage getExit() {
 		return exit;
 	}
 
+	/**
+	 * @param exit
+	 */
 	public static void setExit(BufferedImage exit) {
 		spriteEntity.exit = exit;
 	}
 
+	/**
+	 * @return
+	 */
+	/**
+	 * @return
+	 */
 	public static BufferedImage getWall() {
 		return wall;
 	}
 
+	/**
+	 * @param wall
+	 */
+	/**
+	 * @param wall
+	 */
 	public static void setWall(BufferedImage wall) {
 		spriteEntity.wall = wall;
 	}
 
+	/**
+	 * @return
+	 */
+	/**
+	 * @return
+	 */
 	public static int getLastBehavior() {
 		return lastBehavior;
 	}
 
+	/**
+	 * @param lastBehavior
+	 */
+	/**
+	 * @param lastBehavior
+	 */
+	/**
+	 * @param lastBehavior
+	 */
 	public static void setLastBehavior(int lastBehavior) {
-		spriteEntity.lastBehavior = lastBehavior;
+		if (lastBehavior == 5 || lastBehavior == 1 || lastBehavior == 3 || lastBehavior == 1) {
+			spriteEntity.lastBehavior = lastBehavior;
+		}else {
+			
+		}
 	}
 
+	/**
+	 * @return
+	 */
 	public static BufferedImage getHeroUp() {
 		return heroUp;
 	}
 
+	/**
+	 * @param heroUp
+	 */
 	public static void setHeroUp(BufferedImage heroUp) {
 		spriteEntity.heroUp = heroUp;
 	}
 
+	/**
+	 * @return
+	 */
 	public static BufferedImage getHeroDown() {
 		return heroDown;
 	}
 
+	/**
+	 * @param heroDown
+	 */
 	public static void setHeroDown(BufferedImage heroDown) {
 		spriteEntity.heroDown = heroDown;
 	}
 
+	/**
+	 * @return
+	 */
 	public static BufferedImage getHeroRight() {
 		return heroRight;
 	}
 
+	/**
+	 * @param heroRight
+	 */
 	public static void setHeroRight(BufferedImage heroRight) {
 		spriteEntity.heroRight = heroRight;
 	}
 
+	/**
+	 * @return
+	 */
 	public static BufferedImage getHeroLeft() {
 		return heroLeft;
 	}
 
+	/**
+	 * @param heroLeft
+	 */
 	public static void setHeroLeft(BufferedImage heroLeft) {
 		spriteEntity.heroLeft = heroLeft;
 	}
 
+	/**
+	 * @return
+	 */
 	public static BufferedImage getBorderLeft() {
 		return borderLeft;
 	}
 
+	/**
+	 * @param borderLeft
+	 */
 	public static void setBorderLeft(BufferedImage borderLeft) {
 		spriteEntity.borderLeft = borderLeft;
 	}
 
+	/**
+	 * @return
+	 */
 	public static BufferedImage getBorderTopLeft() {
 		return borderTopLeft;
 	}
 
+	/**
+	 * @param borderTopLeft
+	 */
 	public static void setBorderTopLeft(BufferedImage borderTopLeft) {
 		spriteEntity.borderTopLeft = borderTopLeft;
 	}
 
+	/**
+	 * @return
+	 */
 	public static BufferedImage getBorderRight() {
 		return borderRight;
 	}
 
+	/**
+	 * @param borderRight
+	 */
 	public static void setBorderRight(BufferedImage borderRight) {
 		spriteEntity.borderRight = borderRight;
 	}
 
+	/**
+	 * @return
+	 */
 	public static BufferedImage getBorderTopRight() {
 		return borderTopRight;
 	}
 
+	/**
+	 * @param borderTopRight
+	 */
 	public static void setBorderTopRight(BufferedImage borderTopRight) {
 		spriteEntity.borderTopRight = borderTopRight;
 	}
 
+	/**
+	 * @return
+	 */
 	public static BufferedImage getBorderBottomRight() {
 		return borderBottomRight;
 	}
 
+	/**
+	 * @param borderBottomRight
+	 */
 	public static void setBorderBottomRight(BufferedImage borderBottomRight) {
 		spriteEntity.borderBottomRight = borderBottomRight;
 	}
 
+	/**
+	 * @return
+	 */
 	public static BufferedImage getBorderBottomLeft() {
 		return borderBottomLeft;
 	}
 
+	/**
+	 * @param borderBottomLeft
+	 */
 	public static void setBorderBottomLeft(BufferedImage borderBottomLeft) {
 		spriteEntity.borderBottomLeft = borderBottomLeft;
 	}
 
+	/**
+	 * @return
+	 */
 	public static boolean isEnoughDiamond() {
 		return spriteEntity.enoughDiamond;
 	}
 
+	/**
+	 * @param enoughDiamond
+	 */
 	public static void setEnoughDiamond(boolean enoughDiamond) {
 		spriteEntity.enoughDiamond = enoughDiamond;
 	}
 
+	/**
+	 * @return
+	 */
 	public static BufferedImage getExitClosed() {
 		return exitClosed;
 	}
 
+	/**
+	 * @param exitClosed
+	 */
 	public static void setExitClosed(BufferedImage exitClosed) {
 		spriteEntity.exitClosed = exitClosed;
 	}

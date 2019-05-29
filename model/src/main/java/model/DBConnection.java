@@ -11,13 +11,22 @@ import java.sql.SQLException;
  */
 final class DBConnection {
 	/** The instance. */
+	/**
+	 * 
+	 */
 	private static DBConnection	INSTANCE	= null;
 
 	/** The connection. */
+	/**
+	 * 
+	 */
 	private Connection					connection;
 
 	/**
 	 * Instantiates a new DB connection.
+	 */
+	/**
+	 * 
 	 */
 	private DBConnection() {
 		this.open();
@@ -27,6 +36,9 @@ final class DBConnection {
 	 * Gets the single instance of DBConnection.
 	 *
 	 * @return single instance of DBConnection
+	 */
+	/**
+	 * @return
 	 */
 	public static synchronized DBConnection getInstance() {
 		if (DBConnection.INSTANCE == null) {
@@ -39,6 +51,9 @@ final class DBConnection {
 	 * Open.
 	 *
 	 * @return the boolean
+	 */
+	/**
+	 * @return
 	 */
 	private Boolean open() {
 		final DBProperties dbProperties = new DBProperties();
@@ -57,6 +72,9 @@ final class DBConnection {
 	 * Gets the connection.
 	 *
 	 * @return the connection
+	 */
+	/**
+	 * @return
 	 */
 	public Connection getConnection() {
 		return this.connection;
