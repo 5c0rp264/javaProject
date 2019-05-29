@@ -147,7 +147,11 @@ public class level extends Entity {
 	 * @return the lvlId
 	 */
 	/**
+<<<<<<< HEAD
 	 * @return int Returns the id of the level corresponding to the current level.
+=======
+	 * @return int return id corresponding to the level
+>>>>>>> c8fb0f90894d83abe716924ffb5e6ac0253ffa96
 	 */
 	public int getLevelID() {
 		return lvlId;
