@@ -147,7 +147,7 @@ public class level extends Entity {
 	 * @return the lvlId
 	 */
 	/**
-	 * @return
+	 * @return int return id corresponding to the level
 	 */
 	public int getLevelID() {
 		return lvlId;
