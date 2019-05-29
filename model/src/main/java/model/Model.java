@@ -94,7 +94,7 @@ public final class Model extends Observable implements IModel  {
 
 		try {
 			final DAOLevel leveldao = new DAOLevel(DBConnection.getInstance().getConnection());
-			this.setLevel(leveldao.find(4));
+			this.setLevel(leveldao.find(lvlNum));
 			// this.flagObserver();
 			//System.out.println(leveldao.find(lvlNum).getLevelAsString());
 		} catch (final SQLException e) {

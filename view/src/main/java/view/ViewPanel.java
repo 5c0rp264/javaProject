@@ -162,6 +162,7 @@ class ViewPanel extends JPanel implements Observer {
 		}
 		
 		if (this.getViewFrame().getModel().getLevel().isDead() && !hasBeenNotifiedToStop) {
+			this.getViewFrame().getModel().getRepeatedTask().cancel();
 			hasBeenNotifiedToStop = true;
             graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
             this.viewFrame.printMessage("You died ! Try again...");

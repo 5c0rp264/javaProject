@@ -33,7 +33,13 @@ public class DAOLevel extends DAOEntity<level> {
 
 	@Override
 	public level find(int numLevel) {
-		level _level = new level();
+		level _level = null;
+		try {
+			_level = new level();
+		} catch (InstantiationException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 		try {
 			final String sql = "{call getLevel(?)}";
@@ -46,7 +52,7 @@ public class DAOLevel extends DAOEntity<level> {
 				//System.out.println(resultSet.getString("levelAsTxt"));
 			}
 			return _level;
-		} catch (final SQLException e) {
+		} catch (final SQLException | InstantiationException e) {
 			e.printStackTrace();
 		}
 		return null;

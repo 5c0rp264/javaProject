@@ -15,6 +15,8 @@ public class level extends Entity {
 	/** The message. */
 	private String	levelAsString;
 	
+	private final int maxLevelID = 5;
+	
 	private int timeRemaining;
 	
 	private int playerPositionX;
@@ -39,19 +41,38 @@ public class level extends Entity {
 	 * @param _levelAsString
 	 *          levelAsString
 	 */
-	public level(final int _lvlId, final int _highScore, final String _levelAsString, int maxTimeToDoLevel, int minDiamond) {
-		this.setLevelID(_lvlId);
-		this.setHighScoreLevel(_highScore);
+	public level(final int _lvlId, final int _highScore, final String _levelAsString, int maxTimeToDoLevel, int minDiamond) throws InstantiationException {
+		if (1<=_lvlId && _lvlId <=5) {
+			this.setLevelID(_lvlId);
+		}else {
+			throw new InstantiationException("InstantiationException : couldn't instantiate a new level with these parameters");
+		}
+		if (_highScore>=0) {
+			this.setHighScoreLevel(_highScore);
+		}else {
+			throw new InstantiationException("InstantiationException : couldn't instantiate a new level with these parameters");
+		}
 		this.setLevelAsString(_levelAsString);
-		this.timeRemaining = (maxTimeToDoLevel+2)*4;
-		this.setMinDiamond(minDiamond);
+		if (maxTimeToDoLevel > 0) {
+			this.timeRemaining = (maxTimeToDoLevel+2)*4;
+		}else {
+			throw new InstantiationException("InstantiationException : couldn't instantiate a new level with these parameters");
+		}
+		if (minDiamond > 0) {
+			this.setMinDiamond(minDiamond);
+		}else {
+			throw new InstantiationException("InstantiationException : couldn't instantiate a new level with these parameters");
+		}
+
 	}
 
 	/**
+	 * @throws InstantiationException 
 	 * Instantiates a new hello world.
+	 * @throws  
 	 */
-	public level() {
-		this(1, 0, "########################################\r\n" + 
+	public level() throws InstantiationException {
+		this(1, 5, "########################################\r\n" + 
 				"#ttttttcttdtrctttttrtrtttttttcttttrtttt#\r\n" + 
 				"#trsrttttttctttttttttrdttrttttctttttctt#\r\n" + 
 				"#ttttttttttcttrtttttrtrttrttttttttrtttt#\r\n" + 
@@ -90,8 +111,12 @@ public class level extends Entity {
 	 * @param lvlId
 	 *          the new lvlId
 	 */
-	public void setLevelID(int lvlId) {
-		this.lvlId = lvlId;
+	public void setLevelID(int lvlId) throws IndexOutOfBoundsException {
+		if (1 <= lvlId && lvlId <=maxLevelID) {
+			this.lvlId = lvlId;
+		}else {
+			throw new IndexOutOfBoundsException("levelID out of bounds"); 
+		}
 	}
 	/**
 	 * Gets the highScore.
