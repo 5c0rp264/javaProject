@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class ModelTest {
+public class DAOLevelTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -27,32 +27,12 @@ public class ModelTest {
 	}
 
 	@Test
-	public void testGetRepeatedTask() {
+	public void testDAOLevel() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testModel() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testLoadLevel() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetLevel() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetLevel() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testMovePlayer() {
+	public void testFindInt() {
 		fail("Not yet implemented");
 	}
 

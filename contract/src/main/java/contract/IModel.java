@@ -12,18 +12,15 @@ import entity.level;
  */
 public interface IModel {
 
-	/**
-	 * Gets the hello world.
-	 *
-	 * @return the helloworld entity
-	 */
-
 
 	/**
 	 * Load the message.
 	 *
 	 * @param code
 	 *          the code
+	 */
+	/**
+	 * @param lvlNum
 	 */
 	void loadLevel(int lvlNum);
 
@@ -32,14 +29,29 @@ public interface IModel {
 	 *
 	 * @return the observable
 	 */
+	/**
+	 * @return Observable return which class are observable
+	 */
 	Observable getObservable();
 
+	/**
+	 * @return  level allow to get level
+	 */
 	level getLevel();
 
+	/**
+	 * @param i
+	 */
 	void movePlayer(int i);
 
+	/**
+	 * 
+	 */
 	void flagObserver();
 
+	/**
+	 * @return TimerTask task used to performed animation and increment Scoring system
+	 */
 	TimerTask getRepeatedTask();
 
 }

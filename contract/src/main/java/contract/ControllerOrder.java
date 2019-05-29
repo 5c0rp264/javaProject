@@ -5,18 +5,37 @@ package contract;
  *
  * @author Quentin AOUSTIN
  */
+
 public enum ControllerOrder {
 
-	/** The English. */
+
+	/**
+	 * move up order
+	 */
 	Up,
-	/** The French. */
+
+	/**
+	 * move down order
+	 */
 	Down,
-	/** The Deutch. */
+
+	/**
+	 * move left order
+	 */
 	Left,
-	/** The Indonesia. */
+
+	/**
+	 * move right order
+	 */
 	Right, 
 	
+	/**
+	 * do not move default if other key is typed
+	 */
 	notTheRightKey, 
 	
+	/**
+	 * reload game
+	 */
 	Die
 }

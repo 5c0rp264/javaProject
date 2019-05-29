@@ -7,28 +7,61 @@ import java.util.ArrayList; // import the ArrayList class
 public class level extends Entity {
 
 	/** The id. */
+	/**
+	 * 
+	 */
 	private int	lvlId;
 
 	/** The key. */
+	/**
+	 * 
+	 */
 	private int	highScore;
 
 	/** The message. */
+	/**
+	 * 
+	 */
 	private String	levelAsString;
 	
+	/**
+	 * 
+	 */
 	private final int maxLevelID = 5;
 	
+	/**
+	 * 
+	 */
 	private int timeRemaining;
 	
+	/**
+	 * 
+	 */
 	private int playerPositionX;
 	
+	/**
+	 * 
+	 */
 	private int playerPositionY;
 	
+	/**
+	 * 
+	 */
 	private int minDiamond;
 	
+	/**
+	 * 
+	 */
 	private int diamondGot;
 	
+	/**
+	 * 
+	 */
 	private boolean isDead = false;
 	
+	/**
+	 * 
+	 */
 	private ArrayList<ArrayList<Character> > charList = new ArrayList<ArrayList<Character> >();
 
 	/**
@@ -40,6 +73,14 @@ public class level extends Entity {
 	 *          the highScore
 	 * @param _levelAsString
 	 *          levelAsString
+	 */
+	/**
+	 * @param _lvlId
+	 * @param _highScore
+	 * @param _levelAsString
+	 * @param maxTimeToDoLevel
+	 * @param minDiamond
+	 * @throws InstantiationException
 	 */
 	public level(final int _lvlId, final int _highScore, final String _levelAsString, int maxTimeToDoLevel, int minDiamond) throws InstantiationException {
 		if (1<=_lvlId && _lvlId <=5) {
@@ -70,6 +111,9 @@ public class level extends Entity {
 	 * @throws InstantiationException 
 	 * Instantiates a new hello world.
 	 * @throws  
+	 */
+	/**
+	 * @throws InstantiationException
 	 */
 	public level() throws InstantiationException {
 		this(1, 5, "########################################\r\n" + 
@@ -102,6 +146,9 @@ public class level extends Entity {
 	 *
 	 * @return the lvlId
 	 */
+	/**
+	 * @return
+	 */
 	public int getLevelID() {
 		return lvlId;
 	}
@@ -110,6 +157,10 @@ public class level extends Entity {
 	 *
 	 * @param lvlId
 	 *          the new lvlId
+	 */
+	/**
+	 * @param lvlId
+	 * @throws IndexOutOfBoundsException
 	 */
 	public void setLevelID(int lvlId) throws IndexOutOfBoundsException {
 		if (1 <= lvlId && lvlId <=maxLevelID) {
@@ -123,6 +174,9 @@ public class level extends Entity {
 	 *
 	 * @return the highScore
 	 */
+	/**
+	 * @return
+	 */
 	public int getHighScoreLevel() {
 		return highScore;
 	}
@@ -132,6 +186,9 @@ public class level extends Entity {
 	 * @param highScore
 	 *          the highScore
 	 */
+	/**
+	 * @param highScore
+	 */
 	public void setHighScoreLevel(int highScore) {
 		this.highScore = highScore;
 	}
@@ -139,6 +196,9 @@ public class level extends Entity {
 	 * Gets the levelAsString.
 	 *
 	 * @return the levelAsString
+	 */
+	/**
+	 * @return
 	 */
 	public String getLevelAsString() {
 		return this.levelAsString;
@@ -149,6 +209,9 @@ public class level extends Entity {
 	 *
 	 * @param levelAsString
 	 *          the levelAsString
+	 */
+	/**
+	 * @param levelAsString
 	 */
 	public void setLevelAsString(String levelAsString) {
 		this.levelAsString = levelAsString;
@@ -176,10 +239,16 @@ public class level extends Entity {
 		this.charList = outer;
 	}
 
+	/**
+	 * @return
+	 */
 	public ArrayList<ArrayList<Character> > getLevelAsList() {
 		return charList;
 	}
 
+	/**
+	 * @param charList
+	 */
 	public void setLevelAsList(ArrayList<ArrayList<Character> > charList) {
 		this.charList = charList;
 		String iWillBeLevelAsString = "";
@@ -196,50 +265,86 @@ public class level extends Entity {
 		this.levelAsString = iWillBeLevelAsString;
 	}
 
+	/**
+	 * @return
+	 */
 	public int getTimeRemaining() {
 		return timeRemaining;
 	}
 
+	/**
+	 * @param _timeRemaining
+	 */
 	public void setTimeRemaining(int _timeRemaining) {
 		this.timeRemaining = _timeRemaining;
 	}
 
+	/**
+	 * @return
+	 */
 	public int getPlayerPositionX() {
 		return playerPositionX;
 	}
 
+	/**
+	 * @param playerPositionX
+	 */
 	public void setPlayerPositionX(int playerPositionX) {
 		this.playerPositionX = playerPositionX;
 	}
 
+	/**
+	 * @return
+	 */
 	public int getPlayerPositionY() {
 		return playerPositionY;
 	}
 
+	/**
+	 * @param playerPositionY
+	 */
 	public void setPlayerPositionY(int playerPositionY) {
 		this.playerPositionY = playerPositionY;
 	}
 
+	/**
+	 * @return
+	 */
 	public int getDiamondGot() {
 		return diamondGot;
 	}
 
+	/**
+	 * @param diamondGot
+	 */
 	public void setDiamondGot(int diamondGot) {
 		this.diamondGot = diamondGot;
 	}
 
+	/**
+	 * @return
+	 */
 	public boolean isDead() {
 		return isDead;
 	}
 
+	/**
+	 * @param isDead
+	 */
 	public void setDead(boolean isDead) {
 		this.isDead = isDead;
 	}
 
+	/**
+	 * @return
+	 */
 	public int getMinDiamond() {
 		return minDiamond;
 	}
 
+	/**
+	 * @param minDiamond
+	 */
 	public void setMinDiamond(int minDiamond) {
 		this.minDiamond = minDiamond;
 	}
