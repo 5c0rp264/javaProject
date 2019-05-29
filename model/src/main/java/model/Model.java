@@ -121,7 +121,9 @@ public final class Model extends Observable implements IModel  {
 	 */
 	public void loadLevel(final int lvlNum) {
 		//System.out.println("getting level with SQL");
-
+		if (repeatedTask != null) {
+			repeatedTask.cancel();
+		}
 		try {
 			final DAOLevel leveldao = new DAOLevel(DBConnection.getInstance().getConnection());
 			this.setLevel(leveldao.find(lvlNum));
