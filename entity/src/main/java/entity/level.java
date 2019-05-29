@@ -147,7 +147,7 @@ public class level extends Entity {
 	 * @return the lvlId
 	 */
 	/**
-	 * @return
+	 * @return int Returns the id of the level corresponding to the current level.
 	 */
 	public int getLevelID() {
 		return lvlId;
@@ -175,7 +175,7 @@ public class level extends Entity {
 	 * @return the highScore
 	 */
 	/**
-	 * @return
+	 * @return int Returns HighScore for current level.
 	 */
 	public int getHighScoreLevel() {
 		return highScore;
@@ -198,7 +198,7 @@ public class level extends Entity {
 	 * @return the levelAsString
 	 */
 	/**
-	 * @return
+	 * @return String Return levelAsString
 	 */
 	public String getLevelAsString() {
 		return this.levelAsString;
@@ -240,7 +240,7 @@ public class level extends Entity {
 	}
 
 	/**
-	 * @return
+	 * @return ArrayList ArrayList Character Returns LevelAsList
 	 */
 	public ArrayList<ArrayList<Character> > getLevelAsList() {
 		return charList;
@@ -266,7 +266,7 @@ public class level extends Entity {
 	}
 
 	/**
-	 * @return
+	 * @return int Returns TimeRemaining
 	 */
 	public int getTimeRemaining() {
 		return timeRemaining;
@@ -280,7 +280,7 @@ public class level extends Entity {
 	}
 
 	/**
-	 * @return
+	 * @return int X position of the player.
 	 */
 	public int getPlayerPositionX() {
 		return playerPositionX;
@@ -294,7 +294,7 @@ public class level extends Entity {
 	}
 
 	/**
-	 * @return
+	 * @return int X position of the player.
 	 */
 	public int getPlayerPositionY() {
 		return playerPositionY;
@@ -308,7 +308,7 @@ public class level extends Entity {
 	}
 
 	/**
-	 * @return
+	 * @return int Harvesting diamonds
 	 */
 	public int getDiamondGot() {
 		return diamondGot;
@@ -322,7 +322,7 @@ public class level extends Entity {
 	}
 
 	/**
-	 * @return
+	 * @return boolean Dead player.
 	 */
 	public boolean isDead() {
 		return isDead;
@@ -336,7 +336,7 @@ public class level extends Entity {
 	}
 
 	/**
-	 * @return
+	 * @return int Harvesting Min Diamond.
 	 */
 	public int getMinDiamond() {
 		return minDiamond;

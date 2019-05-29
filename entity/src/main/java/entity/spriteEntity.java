@@ -105,7 +105,7 @@ public class spriteEntity {
 	private static boolean enoughDiamond = false;
 
 	/**
-	 * @return
+	 * @return Only Instance of spriteEntity.
 	 */
 	public static spriteEntity getInstance() {
 		if (spriteEntity.spriteEntityInstance == null) {
