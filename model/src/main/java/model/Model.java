@@ -108,7 +108,7 @@ public final class Model extends Observable implements IModel  {
 		
 		Timer timer = new Timer("fallingObjectTimer");
 		long delay = 0;
-		long period = 100;
+		long period = 250;
 		timer.scheduleAtFixedRate(repeatedTask, delay, period);
 	}
 	
