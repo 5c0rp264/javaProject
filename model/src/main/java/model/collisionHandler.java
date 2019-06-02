@@ -23,7 +23,7 @@ public class collisionHandler {
 	 * @param _level
 	 * @param _model
 	 * @param charList
-	 * @return
+	 * @return Boolean checks the player's position and collisions.
 	 */
 	public Boolean checkCollisionForPlayerPositionMovementAndPush(int playerPositionY, int playerPositionX,
 			int behavior, level _level, Model _model, ArrayList<ArrayList<Character>> charList) {
