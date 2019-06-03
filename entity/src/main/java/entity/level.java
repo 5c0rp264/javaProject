@@ -6,84 +6,79 @@ import java.util.ArrayList; // import the ArrayList class
 
 public class level extends Entity {
 
-	/** The id. */
+
 	/**
-	 * 
+	 * int	lvlId
 	 */
 	private int	lvlId;
 
-	/** The key. */
 	/**
 	 * 
 	 */
 	private int	highScore;
 
-	/** The message. */
 	/**
-	 * 
+	 * int	highScore
 	 */
 	private String	levelAsString;
-	
+
+
 	/**
-	 * 
+	 * int maxLevelID
 	 */
 	private final int maxLevelID = 5;
-	
+
+
 	/**
-	 * 
+	 * int timeRemaining
 	 */
 	private int timeRemaining;
-	
+
 	/**
-	 * 
+	 * int playerPositionX
 	 */
 	private int playerPositionX;
-	
+
 	/**
-	 * 
+	 * int playerPositionY
 	 */
 	private int playerPositionY;
-	
+
 	/**
-	 * 
+	 * int minDiamond
 	 */
 	private int minDiamond;
-	
+
 	/**
-	 * 
+	 * int diamondGot
 	 */
 	private int diamondGot;
 	
+
 	/**
-	 * 
+	 * boolean isDead
 	 */
 	private boolean isDead = false;
-	
+
+
 	/**
-	 * 
+	 * ArrayListArrayListCharacter charList
 	 */
 	private ArrayList<ArrayList<Character> > charList = new ArrayList<ArrayList<Character> >();
 
+	
+	
+
 	/**
-	 * Instantiates a new level.
-	 *
-	 * @param _lvlId
-	 *          the level ID 
-	 * @param _highScore
-	 *          the highScore
-	 * @param _levelAsString
-	 *          levelAsString
-	 */
-	/**
-	 * @param _lvlId
-	 * @param _highScore
-	 * @param _levelAsString
-	 * @param maxTimeToDoLevel
-	 * @param minDiamond
-	 * @throws InstantiationException
+	 * @param _lvlId level number
+	 * @param _highScore highscore of this level (in future release)
+	 * @param _levelAsString simply the lvel as string
+	 * @param maxTimeToDoLevel max time you have in seconds to achieve the level
+	 * @param minDiamond minimum count of diamond to have to achieve this level
+	 * @throws InstantiationException error if cannot create level with those parameters
 	 */
 	public level(final int _lvlId, final int _highScore, final String _levelAsString, int maxTimeToDoLevel, int minDiamond) throws InstantiationException {
-		if (1<=_lvlId && _lvlId <=5) {
+		if (1<=_lvlId && _lvlId <=maxLevelID) {
 			this.setLevelID(_lvlId);
 		}else {
 			throw new InstantiationException("InstantiationException : couldn't instantiate a new level with these parameters");
@@ -107,13 +102,9 @@ public class level extends Entity {
 
 	}
 
+
 	/**
-	 * @throws InstantiationException 
-	 * Instantiates a new hello world.
-	 * @throws  
-	 */
-	/**
-	 * @throws InstantiationException
+	 * @throws InstantiationException error if cannot create level with those 
 	 */
 	public level() throws InstantiationException {
 		this(1, 5, "########################################\r\n" + 
@@ -141,27 +132,16 @@ public class level extends Entity {
 	}
 
 	
+
+	
+
 	/**
-	 * Gets the lvlId.
-	 *
-	 * @return the lvlId
-	 */
-	/**
-<<<<<<< HEAD
-	 * @return int Returns the id of the level corresponding to the current level.
-=======
-	 * @return int return id corresponding to the level
->>>>>>> c8fb0f90894d83abe716924ffb5e6ac0253ffa96
+	 * @return
 	 */
 	public int getLevelID() {
 		return lvlId;
 	}
-	/**
-	 * Sets the lvlId.
-	 *
-	 * @param lvlId
-	 *          the new lvlId
-	 */
+
 	/**
 	 * @param lvlId
 	 * @throws IndexOutOfBoundsException
@@ -173,47 +153,34 @@ public class level extends Entity {
 			throw new IndexOutOfBoundsException("levelID out of bounds"); 
 		}
 	}
+
+	
+	
 	/**
-	 * Gets the highScore.
-	 *
-	 * @return the highScore
-	 */
-	/**
-	 * @return int Returns HighScore for current level.
+	 * @return
 	 */
 	public int getHighScoreLevel() {
 		return highScore;
 	}
-	/**
-	 * Sets the highScore.
-	 *
-	 * @param highScore
-	 *          the highScore
-	 */
+
+
 	/**
 	 * @param highScore
 	 */
 	public void setHighScoreLevel(int highScore) {
 		this.highScore = highScore;
 	}
+
+
 	/**
-	 * Gets the levelAsString.
-	 *
-	 * @return the levelAsString
-	 */
-	/**
-	 * @return String Return levelAsString
+	 * @return
 	 */
 	public String getLevelAsString() {
 		return this.levelAsString;
 	}
 
-	/**
-	 * Sets the level as String.
-	 *
-	 * @param levelAsString
-	 *          the levelAsString
-	 */
+
+	
 	/**
 	 * @param levelAsString
 	 */
@@ -225,7 +192,7 @@ public class level extends Entity {
 	    int y = 1;
 		for (int i = 0; i < this.levelAsString.length(); i++) {
 			if (this.levelAsString.charAt(i) == '\n') {
-				//System.out.println("That's a \\n");
+
 				inner.add(this.levelAsString.charAt(i));
 				outer.add(inner);
 				inner = new ArrayList<Character>();
@@ -243,12 +210,14 @@ public class level extends Entity {
 		this.charList = outer;
 	}
 
+
 	/**
-	 * @return ArrayList ArrayList Character Returns LevelAsList
+	 * @return
 	 */
 	public ArrayList<ArrayList<Character> > getLevelAsList() {
 		return charList;
 	}
+
 
 	/**
 	 * @param charList
@@ -258,7 +227,7 @@ public class level extends Entity {
 		String iWillBeLevelAsString = "";
 		for (int i = 0; i < this.charList.size(); i++){
 		    for (int j = 0; j < this.charList.get(i).size(); j++){
-		    	//System.out.println(iWillBeLevelAsString);
+		    	
 		    	iWillBeLevelAsString = (String) iWillBeLevelAsString + this.charList.get(i).get(j);
 		    	if (this.charList.get(i).get(j) == 's') {
 		    		this.setPlayerPositionY(i);
@@ -269,13 +238,17 @@ public class level extends Entity {
 		this.levelAsString = iWillBeLevelAsString;
 	}
 
+
+
 	/**
-	 * @return int Returns TimeRemaining
+	 * @return
 	 */
 	public int getTimeRemaining() {
 		return timeRemaining;
 	}
 
+
+	
 	/**
 	 * @param _timeRemaining
 	 */
@@ -283,12 +256,14 @@ public class level extends Entity {
 		this.timeRemaining = _timeRemaining;
 	}
 
+
 	/**
-	 * @return int X position of the player.
+	 * @return
 	 */
 	public int getPlayerPositionX() {
 		return playerPositionX;
 	}
+
 
 	/**
 	 * @param playerPositionX
@@ -297,12 +272,14 @@ public class level extends Entity {
 		this.playerPositionX = playerPositionX;
 	}
 
+
 	/**
-	 * @return int X position of the player.
+	 * @return
 	 */
 	public int getPlayerPositionY() {
 		return playerPositionY;
 	}
+
 
 	/**
 	 * @param playerPositionY
@@ -311,12 +288,15 @@ public class level extends Entity {
 		this.playerPositionY = playerPositionY;
 	}
 
+	
+
 	/**
-	 * @return int Harvesting diamonds
+	 * @return
 	 */
 	public int getDiamondGot() {
 		return diamondGot;
 	}
+
 
 	/**
 	 * @param diamondGot
@@ -325,13 +305,17 @@ public class level extends Entity {
 		this.diamondGot = diamondGot;
 	}
 
+
+
 	/**
-	 * @return boolean Dead player.
+	 * @return
 	 */
 	public boolean isDead() {
 		return isDead;
 	}
 
+
+	
 	/**
 	 * @param isDead
 	 */
@@ -339,12 +323,15 @@ public class level extends Entity {
 		this.isDead = isDead;
 	}
 
+
+	
 	/**
-	 * @return int Harvesting Min Diamond.
+	 * @return
 	 */
 	public int getMinDiamond() {
 		return minDiamond;
 	}
+
 
 	/**
 	 * @param minDiamond

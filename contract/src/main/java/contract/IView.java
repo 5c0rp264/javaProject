@@ -8,10 +8,10 @@ package contract;
 public interface IView {
 
 	/**
-	 * Prints the message.
+	 * Display the level.
 	 *
-	 * @param message
-	 *          the message
+	 * @param levelAsText
+	 *          the level as text
 	 */
 	void displayLevel(final String levelAsText);
 }

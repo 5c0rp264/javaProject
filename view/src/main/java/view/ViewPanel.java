@@ -89,7 +89,7 @@ class ViewPanel extends JPanel implements Observer {
 
 		
 		//new spriteEntity();
-		entity.spriteEntity _spriteEntity = spriteEntity.getInstance();
+		entity.spriteEntity _spriteEntity = new spriteEntity().getInstance();
 		for (int y = 0; y < (this.getHeight()/spriteSize)+1; y++) {//make a background to avoid to have a blank white one
 			for (int x = 0; x < (this.getWidth()/spriteSize)+1; x++) {
 				try {

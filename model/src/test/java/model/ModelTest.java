@@ -39,21 +39,21 @@ public class ModelTest {
 				"ttttttrtttrrtttttttttttttmtttttmttttttttttrrttttttrttrtttttt\r\n" + 
 				"ttttttttttttttttttrrtttrmttrrrttmttttrtrtttttdttttttrttttttt\r\n" + 
 				"ttttrtttttcttttttttttttmmmmmmmmmmmttttrtrrctrtrtttcrtttttttt\r\n" + 
-				"tccctttttcRcttttctrtttmttttcttrtttmttttcttRctttttcRttttttttt\r\n" + 
-				"ttttrrrrrtrttttttttccmtcttrRtcrtcrcmtttcttttttctctcttttttttt\r\n" + 
+				"tccctttttcrcttttctrtttmttttcttrtttmttttcttrctttttccttttttttt\r\n" + 
+				"ttttrrrrrtrttttttttccmtcttrrtcrtcrcmtttcttttttctctrttttttttt\r\n" + 
 				"ttttttttttz######################################wtttttttttt\r\n" + 
 				"tttmmrttttammmmmmmmmttttrtrttrttttttttrtmmmmmmmmmjtttttttttt\r\n" + 
-				"ttttttttttamcccccccctttttttttttrttttrtttccccccccmjtttrrttttt\r\n" + 
-				"ttttttttttamcdecccccttrttttttttttrtttrttcccccedcmjtttttttttt\r\n" + 
+				"ttttttttttamcccecccctttttttttttrttttrtttccccecccmjtttrrttttt\r\n" + 
+				"ttttttttttamcdccccccttrttttttttttrtttrttccccccdcmjtttttttttt\r\n" + 
 				"tttttmttttammmmmmmmmttrttttttttrttttttrtmmmmmmmmmjtttttcrttt\r\n" + 
-				"ttttmtmtttamccccccccttttttrtttrtttttttrtccccccccmjtrcttttttt\r\n" + 
-				"tttmmmmmttamcdecccccttttrttttttrtrrtttttcccccedcmjttmttttttt\r\n" + 
+				"ttttmtmtttamccceccccttttttrtttrtttttttrtccccecccmjtrcttttttt\r\n" + 
+				"tttmmmmmttamcdccccccttttrttttttrtrrtttttccccccdcmjttmttttttt\r\n" + 
 				"ttmrttttmtammmmmmmmmtrrttttttttrtrrtttttmmmmmmmmmjtttttccttt\r\n" + 
-				"tmtttttttmamccccccccttttrtrttttrttrtttttccccccccmjttttrttttt\r\n" + 
-				"trrrttttttamcdecccccttttrtrttttrttrttrttcccccedcmjttttttmrtt\r\n" + 
+				"tmtttttttmamccceccccttttrtrttttrttrtttttccccecccmjttttrttttt\r\n" + 
+				"trrrttttttamcdccccccttttrtrttttrttrttrttccccccdcmjttttttmrtt\r\n" + 
 				"ttttttttddammmmmmmmmtrrtrttrttttrtttrtttmmmmmmmmmjttcctttttt\r\n" + 
-				"tttttcrtttamcccccccctrrtrttrttttttttttttccccccccmjttcrtttttt\r\n" + 
-				"tttcctttttamcdecccccttttrttrttttttttrtttcccccedcmjttttrrtttt\r\n" + 
+				"tttttcrtttamcccccccctrrtrttrttttttttttttcccccEccmjttcrtttttt\r\n" + 
+				"tttcctttttamcdecccccttttrttrttttttttrtttccccccdcmjttttrrtttt\r\n" + 
 				"ttttttttttammmmmmmmmtttttrtttrttttrttrttmmmmmmmmmjtttttttttt\r\n" + 
 				"ttttttttttattttrtrttrttttttttrtttttrttttttttttttrjtttmmmtttt\r\n" + 
 				"ttttttttttattttttrttttrttttrttrtrtttrttrtttttttttjtttttttttt\r\n" + 
@@ -69,12 +69,18 @@ public class ModelTest {
 				"ttttttrtttrrtttttttttttttmtttttmttttttttttrrttttttrttrtttttt\r\n" + 
 				"ttttttttttttttttttrrtttrmttrrrttmttttrtrtttttdttttttrttttttt\r\n" + 
 				"ttttrtttttcttttttttttttmmmmmmmmmmmttttrtrrctrtrtttcrtttttttt\r\n" + 
-				"tccctttttcRcttttctrtttmttttcttrtttmttttcttRctttttcRttttttttt\r\n" + 
-				"ttttrrrrrtrttttttttccmtcttrRtcrtcrcmtttcttttttctctcttttttttt\r\n" ;
+				"tccctttttcrcttttctrtttmttttcttrtttmttttcttrctttttccttttttttt\r\n" + 
+				"ttttrrrrrtrttttttttccmtcttrRtcrtcrcmtttcttttttctctRttttttttt\r\n" ;
 		modelTest.loadLevel(4);
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		String level4GotFromSQL = modelTest.getLevel().getLevelAsString();
 		//System.out.println(modelTest.getLevel().getLevelAsString());
-		assertEquals(level4GotFromSQL,expectedLevel4);
+		assertEquals(level4GotFromSQL.toLowerCase(),expectedLevel4.toLowerCase());
 	}
 
 	@Test
@@ -312,7 +318,7 @@ public class ModelTest {
 				"ttttrrrrrtrttttttttccmtcttrctcrtcrcmtttcttttttctctcttttttttt\r\n" ;
 		modelTest.getLevel().setLevelAsString(levelAtFirst);
 		modelTest.movePlayer(3);
-		assertEquals(modelTest.getLevel().getLevelAsString(),levelExpected);
+		assertEquals(modelTest.getLevel().getLevelAsString().toLowerCase(),levelExpected.toLowerCase());
 	}
 
 }

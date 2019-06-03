@@ -144,13 +144,6 @@ class ViewFrame extends JFrame implements KeyListener {
 		//this.setBounds(200, 0, 1000, 1000);
 	}
 
-	/**
-	 * Prints the message.
-	 *
-	 * @param message
-	 *          the message
-	 */
-
 	/*
 	 * (non-Javadoc)
 	 *

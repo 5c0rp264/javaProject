@@ -98,7 +98,7 @@ public final class Model extends Observable implements IModel  {
 					//System.out.println(level.getTimeRemaining());
 					cH.makeEverythingFallDownAndEnnemyMove(level, model);
 					if (level.getDiamondGot()>= level.getMinDiamond()) {
-						spriteEntity.setEnoughDiamond(true);
+						new spriteEntity().getInstance().setEnoughDiamond(true);
 					}
 				}
 			}
@@ -146,7 +146,7 @@ public final class Model extends Observable implements IModel  {
 			e.printStackTrace();
 		}
 
-		spriteEntity.setEnoughDiamond(false);
+		new spriteEntity().getInstance().setEnoughDiamond(false);
 		cH.lastPurposeMonster = 5;
 
 	}
@@ -199,7 +199,7 @@ public final class Model extends Observable implements IModel  {
 		int newSYPosition = 0;
 		int oldSXposition = 0;
 		int oldSYPosition = 0;
-		spriteEntity.setLastBehavior(directionIndex);
+		new spriteEntity().getInstance().setLastBehavior(directionIndex);
 		for (int i = 0; i < charList.size(); i++) {
 			for (int j = 0; j < charList.get(i).size(); j++) {
 				if (charList.get(i).get(j) == 's') {

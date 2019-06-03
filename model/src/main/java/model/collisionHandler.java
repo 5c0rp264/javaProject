@@ -110,7 +110,7 @@ public class collisionHandler {
 					if (charList.get(i + 1).get(j) == 'c'  && Character.toLowerCase(charList.get(i).get(j)) != 'e') {//make any sprite fall down if there is a way under
 						charList.get(i + 1).set((j), Character.toUpperCase(charList.get(i).get(j)));
 						charList.get(i).set(j, 'c');
-					} else if ((Character.toLowerCase(charList.get(i + 1).get(j)) == 'r'
+					} else if ((Character.toLowerCase(charList.get(i + 1).get(j)) == 'r' 
 							|| Character.toLowerCase(charList.get(i + 1).get(j)) == 'd')// make rock fall aside of diamond or other rock
 							&& charList.get(i).get(j) == 'r') { 
 						if (charList.get(i + 1).get(j - 1) == 'c' && charList.get(i).get(j - 1) == 'c') { // fall left
@@ -120,7 +120,12 @@ public class collisionHandler {
 							charList.get(i + 1).set((j + 1), Character.toUpperCase(charList.get(i).get(j)));
 							charList.get(i).set(j, 'c');
 						}
-					} else if (Character.toLowerCase(charList.get(i).get(j)) == 'e') { //animate if this is an ennemy
+					} else if ((charList.get(i).get(j) == 'R' || charList.get(i).get(j) == 'D' ) && Character.toLowerCase(charList.get(i+1).get(j)) == 'e') { // make ennemy die
+						//System.out.println("Ennemy should die")	;
+						charList.get(i+1).set(j, charList.get(i).get(j));
+						charList.get(i).set(j, 'c');
+						_level.setDiamondGot(_level.getDiamondGot()+4);
+					}else if (Character.toLowerCase(charList.get(i).get(j)) == 'e') { //animate if this is an ennemy
 						switch (this.lastPurposeMonster) {
 						case 5:
 							if ((charList.get(i-1).get(j) == 'c' || charList.get(i-1).get(j) == 's') && charList.get(i).get(j) == 'e' && shouldBeLowerCase){
