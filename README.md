@@ -36,8 +36,11 @@ Before making any request see code of conduct.
 ```
 ## Authors
 -Quentin Aoustin
+
 -Alex Brianceau
+
 -Kylian Breton
+
 -Bastien
 
 See also the list of [contributors](https://github.com/5c0rp264/javaProject/contributors) who participated in this project.
