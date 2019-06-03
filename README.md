@@ -31,8 +31,9 @@ Before making any request see code of conduct.
 
 
 ## Versioning
-
-No real versioning needed since ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `this is an abandonware.`
+```html
+<p>No real versioning needed since <span style="color:f03c15"this is an abandonware.</span></p>
+```
 
 ## Authors
 -Quentin Aoustin
