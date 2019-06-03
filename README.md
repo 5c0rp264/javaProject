@@ -31,10 +31,9 @@ Before making any request see code of conduct.
 
 
 ## Versioning
-```html
-<p>No real versioning needed since <span style="color:f03c15"this is an abandonware.</span></p>
+```diff
+- No real versioning needed since this is an abandonware.
 ```
-
 ## Authors
 -Quentin Aoustin
 -Alex Brianceau
