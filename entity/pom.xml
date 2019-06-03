@@ -7,4 +7,5 @@
   </parent>
   <artifactId>entity</artifactId>
   <name>Entity</name>
+  <description>Each important entity existing and instantiate via the model.</description>
 </project>
