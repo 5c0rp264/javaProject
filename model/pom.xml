@@ -27,4 +27,5 @@
 			<version>2.1.1e</version>
 		</dependency>
 	</dependencies>
+	<description>The model is the one that calculate everything in the background such as animation, movement and so on</description>
 </project>
