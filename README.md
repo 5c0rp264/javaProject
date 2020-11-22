@@ -43,7 +43,7 @@ Before making any request see code of conduct.
 
 -Bastien
 
-See also the list of [contributors](https://github.com/5c0rp264/javaProject/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/TomBANCHEREAU/EasySave/graphs/contributors) who participated in this project.
 
 ## License
 
